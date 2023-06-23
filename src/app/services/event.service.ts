@@ -8,12 +8,16 @@ import { Event } from '../models/event';
 })
 export class EventService {
 
-  baseURL: string = "https://localhost:7197/events";
+  baseURL: string = "https://localhost:7197/Events";
 
   constructor(private http: HttpClient) { }
 
-  getAllFutureEvent(): Observable<Event[]> {
+  getAllEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(this.baseURL);
+  }
+
+  getAllFutureEvent(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.baseURL + "/future-events");
   }
 
   getEventById(eventId: number): Observable<Event> {
@@ -28,8 +32,8 @@ export class EventService {
     return this.http.post(this.baseURL, newEvent);
   }
 
-  updateEvent(updatedEvent: Event) {
-    return this.http.put(this.baseURL + "/" + updatedEvent.eventId, updatedEvent);
+  editEvent(editedEvent: Event) {
+    return this.http.put(this.baseURL + "/" + editedEvent.eventId, editedEvent);
   }
 
   deleteEvent(eventId: number) {
