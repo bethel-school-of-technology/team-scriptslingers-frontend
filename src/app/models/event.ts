@@ -5,13 +5,15 @@ export class Event {
     location?: string;
     hostName?: string;
     eventDate?: Date;
+    eventIsFinished?: boolean;
 
-    constructor(eventId?: string, eventTitle?: string, description?: string, location?: string, hostName?: string, eventDate?: Date) {
+    constructor(eventId?: string, eventTitle?: string, description?: string, location?: string, hostName?: string, eventDate?: Date, eventIsFinished?: boolean) {
         this.eventId = eventId;
         this.eventTitle = eventTitle;
         this.description = description;
         this.location = location;
         this.hostName = hostName;
         this.eventDate = eventDate;
+        this.eventIsFinished = eventIsFinished;
     }
 }
