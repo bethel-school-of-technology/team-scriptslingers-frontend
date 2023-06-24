@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.eventService.getAllEventss().subscribe((foundEvents: Event[]) => {
+    this.eventService.getAllEvents().subscribe((foundEvents: Event[]) => {
       console.log(foundEvents);
       this.eventList = foundEvents;
     });
