@@ -1,1 +1,21 @@
+<mat-toolbar color= "#00693E">
+    <span>The Tavern</span>
+  
+      <span class="spacer"></span>
+    <span>
+      <button mat-button routerLink="/quests" aria-label="Quests">Quests</button>
+    </span>
+  
+    <!-- <span *ngIf="!isLoggedIn">
+      <button mat-button routerLink="/signup" aria-label="Sign Up">Sign Up</button>
+      <button mat-button routerLink="/signin" aria-label="Sign In">Sign In</button>
+    </span>
+  
+    <span *ngIf="isLoggedIn">
+      <button mat-button [routerLink]='["/profile/", username]' aria-label="profile">{{ username }}</button>
+      <button mat-button (click)="logout()" aria-label="Logout">Logout</button>
+    </span> -->
+  
+</mat-toolbar>
+
 <router-outlet></router-outlet>
