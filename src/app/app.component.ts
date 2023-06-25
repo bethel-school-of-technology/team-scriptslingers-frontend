@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'team-scriptslingers-frontend';
+
+  isLoggedIn = true;
+  username?: string;
+  constructor(public router: Router) {}
+
+  logout() {
+    console.log("You are now logged out :)")
+    this.isLoggedIn = false;
+  }
+  
 }
