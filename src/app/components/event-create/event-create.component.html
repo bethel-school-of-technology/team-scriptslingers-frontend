@@ -1,1 +1,21 @@
-<p>event-create works!</p>
+<div>
+    <form (ngSubmit)="addEvent()">
+        <h1>Create New Event</h1>
+
+        <span>New Event Title  </span>
+        <input placeholder="Enter Your Title" type="text" name="eventTitle" [(ngModel)]="newEvent.eventTitle"><br><br>
+
+        <span>Event Desciption  </span>
+        <input placeholder="Enter Desciption" type="text" name="description" [(ngModel)]="newEvent.description"><br><br>
+
+        <span>Event Location  </span>
+        <input placeholder="Where will this event take place" type="text" name="location" [(ngModel)]="newEvent.location"><br><br>
+
+        <span>Event Time  </span>
+        <input placeholder="When will this event take place" type="text" name="eventTime" [(ngModel)]="newEvent.eventTime"><br><br>
+
+        <button>
+          Create
+        </button>
+    </form>
+    </div>
