@@ -32,8 +32,8 @@ export class EventService {
     return this.http.post(this.baseURL, newEvent);
   }
 
-  editEvent(editedEvent: Event) {
-    return this.http.put(this.baseURL + "/" + editedEvent.eventId, editedEvent);
+  editEvent(eventId: number, editedEvent: Event) {
+    return this.http.put(this.baseURL + "/" + eventId, editedEvent);
   }
 
   deleteEvent(eventId: number) {

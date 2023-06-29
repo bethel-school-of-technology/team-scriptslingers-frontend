@@ -1,1 +1,21 @@
-<p>event-edit works!</p>
+<div>
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <h1>Update Event</h1>
+    
+        <span>Event Title  </span>
+        <input placeholder="Enter Your Title" type="text" name="eventTitle" [(ngModel)]="currentEvent.eventTitle"><br><br>
+    
+        <span>Event Desciption  </span>
+        <input placeholder="Enter Desciption" type="text" name="description" [(ngModel)]="currentEvent.description"><br><br>
+    
+        <span>Event Location  </span>
+        <input placeholder="Where will this event take place" type="text" name="location" [(ngModel)]="currentEvent.location"><br><br>
+    
+        <span>Event Time  </span>
+        <input placeholder="When will this event take place" type="text" name="eventTime" [(ngModel)]="currentEvent.eventTime"><br><br>
+            
+        <button>
+          Update
+        </button>
+    </form>
+    </div>
