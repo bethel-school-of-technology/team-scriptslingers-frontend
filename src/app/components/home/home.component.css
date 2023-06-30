@@ -1,0 +1,67 @@
+
+  
+ .section1 {
+    height: 100vh;
+    background-image: url('https://th.bing.com/th/id/R.e93488da67923d85f78b62fd91f05892?rik=r1FZq90Ck70icA&pid=ImgRaw&r=0');
+    background-size: cover;
+  }
+  
+  .section2 {
+    height: 100vh;
+    background-image: url('https://th.bing.com/th/id/R.e93488da67923d85f78b62fd91f05892?rik=r1FZq90Ck70icA&pid=ImgRaw&r=0');
+    background-size: cover;
+  }
+
+  .section3 {
+    height: 100vh; 
+    background-image: url('https://th.bing.com/th/id/R.d099981b913dd021f8e07aa230cd398b?rik=yhTE05KYiA7%2bCg&pid=ImgRaw&r=0');
+    background-size: cover;
+   
+  }
+  
+  
+
+
+
+  .parallax-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .foreground-image {
+    position: absolute;
+    opacity: 60%;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    background-image: url('https://th.bing.com/th/id/R.d099981b913dd021f8e07aa230cd398b?rik=yhTE05KYiA7%2bCg&pid=ImgRaw&r=0');
+    background-size: cover;
+    background-position: center;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .background-image {
+    position: absolute;
+    opacity: 75%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.sheknows.com/wp-content/uploads/2018/12/xj4bi9mbdvwxaceryecj.jpeg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .parallax-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    z-index: 2;
+  }

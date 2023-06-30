@@ -1,1 +1,11 @@
-<p>event-details works!</p>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ currentEvent.eventTitle }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Description: {{ currentEvent.description }}</p>
+      <p>Location: {{ currentEvent.location }}</p>
+      <p>Host Name: {{ currentEvent.hostName }}</p>
+      <p>Event Time: {{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</p>
+    </mat-card-content>
+  </mat-card>
