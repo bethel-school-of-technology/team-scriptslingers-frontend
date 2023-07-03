@@ -8,7 +8,9 @@ import { Event } from '../models/event';
 })
 export class EventService {
 
-  baseURL: string = "https://localhost:7197/Events";
+  baseURL: string = "https://localhost:7197/api/Events";
+  authURL: string = "https://localhost:7197/api/auth";
+  tokenKey: string = "MoWildToken"
 
   constructor(private http: HttpClient) { }
 
@@ -28,15 +30,24 @@ export class EventService {
     return this.http.get<Event>(this.baseURL + "/" + eventMonth + "/" + eventYear);
   }
 
-  createEvent(newEvent: Event) {
-    return this.http.post(this.baseURL, newEvent);
+  CreateEvent(newEvent: Event) {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.post(this.baseURL, newEvent, { headers: reqHeaders });
   }
 
-  editEvent(editedEvent: Event) {
-    return this.http.put(this.baseURL + "/" + editedEvent.eventId, editedEvent);
+  editEvent(eventId: number, editedEvent: Event) {
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+  }
+    return this.http.put(this.baseURL + "/" + eventId, editedEvent, { headers: reqHeaders });
   }
 
   deleteEvent(eventId: number) {
-    return this.http.delete(this.baseURL + "/" + eventId)
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+  }
+    return this.http.delete(this.baseURL + "/" + eventId, { headers: reqHeaders })
   }
 }
