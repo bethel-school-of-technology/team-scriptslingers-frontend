@@ -2,3 +2,8 @@
     flex: 1 1 auto;
 }
 
+#logo {
+    color: #002D03;
+    width: 3%;
+    filter: invert(100%);
+}
