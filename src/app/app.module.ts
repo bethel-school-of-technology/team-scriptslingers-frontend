@@ -20,6 +20,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatStepperModule } from '@angular/material/stepper';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostCreateComponent } from './components/post-create/post-create.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { CommentCreateComponent } from './components/comment-create/comment-create.component';
+import { CommentDetailsComponent } from './components/comment-details/comment-details.component';
+import { CommentEditComponent } from './components/comment-edit/comment-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,13 @@ import { MatStepperModule } from '@angular/material/stepper';
     EventCreateComponent,
     CalendarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PostDetailsComponent,
+    PostCreateComponent,
+    PostEditComponent,
+    CommentCreateComponent,
+    CommentDetailsComponent,
+    CommentEditComponent
   ],
   imports: [
     BrowserModule,

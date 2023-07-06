@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ currentPost.postContent }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>User: {{ currentPost.hostName }}</p>
+      <p>At: {{ currentPost.postedAt | date: 'MMM d, y, h:mm a' }}</p>
+      <br>
+      <h3>Comments:</h3>
+      <div *ngFor="let comment of commentList">
+      <div *ngIf="comment.postId === currentPost.postId">
+        <p>{{comment.commentContent}}</p>
+        <p>User: {{comment.commenter}}</p>
+        <p>At: {{comment.postedAt | date: 'MMM d, y, h:mm a' }}</p>
+        <br>
+    </div>
+</div>
+    </mat-card-content>
+  </mat-card>
+
+
+ 

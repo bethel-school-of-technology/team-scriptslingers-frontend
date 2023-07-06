@@ -7,6 +7,12 @@ import { EventCreateComponent } from './components/event-create/event-create.com
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostCreateComponent } from './components/post-create/post-create.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { CommentCreateComponent } from './components/comment-create/comment-create.component';
+import { CommentDetailsComponent } from './components/comment-details/comment-details.component';
+import { CommentEditComponent } from './components/comment-edit/comment-edit.component';
 
 const routes: Routes = [
   {path: "",redirectTo: "/home",pathMatch: "full"},
@@ -16,7 +22,13 @@ const routes: Routes = [
   {path: "calendar", component: CalendarComponent},
   {path: "event-create", component: EventCreateComponent},
   {path: "event-details/:id", component: EventDetailsComponent},
-  {path: "event-edit/:id", component: EventEditComponent}
+  {path: "event-edit/:id", component: EventEditComponent},
+  {path: "post-create", component: PostCreateComponent},
+  {path: "post-details/:id", component: PostDetailsComponent},
+  {path: "post-edit/:id", component: PostEditComponent},
+  {path: "comment-create", component: CommentCreateComponent},
+  {path: "comment-details/:id", component: CommentDetailsComponent},
+  {path: "comment-edit/:id", component: CommentEditComponent}
 ];
 
 @NgModule({
