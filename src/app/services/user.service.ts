@@ -29,7 +29,7 @@ export class UserService {
       }));
   }
 
-  getUser() {
+  getCurrentUser() {
     let user = localStorage.getItem('MoWildToken');
     if (user) {
       var base64Url = user.split('.')[1];
