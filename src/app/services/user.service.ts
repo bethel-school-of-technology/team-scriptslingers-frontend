@@ -9,7 +9,6 @@ import { Observable, tap } from 'rxjs';
 export class UserService {
 
   authURL: string = "https://localhost:7197/api/auth";
-  currentUser: any;
   isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient) { }
@@ -28,6 +27,16 @@ export class UserService {
         localStorage.setItem('isLoggedIn', 'true');
         console.log('The value of IsLoggedIn: ', "'isLoggedIn'")
       }));
+  }
+
+  getUser() {
+    let user = localStorage.getItem('MoWildToken');
+    if (user) {
+      var base64Url = user.split('.')[1];
+      var base64 = base64Url.replace('-', '+').replace('_', '/');
+      return JSON.parse(window.atob(base64));
+    }
+    return{};
   }
 
   logout() {
