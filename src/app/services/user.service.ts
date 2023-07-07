@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,13 @@ export class UserService {
 
   authURL: string = "https://localhost:7197/api/auth";
   currentUser: any;
-  isLoggedIn: boolean = false;
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  private currentUserEmailSubject = new BehaviorSubject<string | null>(null);
+  currentUserEmail$ = this.currentUserEmailSubject.asObservable();
+
+  isAdmin: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -18,20 +24,32 @@ export class UserService {
     return this.http.post<User>(`${this.authURL}/register`, newUser);
   }
 
-  login(email: string, password: string) {
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append('email', email);
-    queryParams = queryParams.append('password', password);
+  login(email: string, password: string): Observable<any> {
+    const queryParams = new HttpParams()
+      .append('email', email)
+      .append('password', password);
+
     return this.http.get(`${this.authURL}/login`, { params: queryParams, responseType: 'text' })
-      .pipe(tap((response: any) => {
-        localStorage.setItem('myEventToken', response);
-        localStorage.setItem('isLoggedIn', 'true');
-        console.log('The value of IsLoggedIn: ', "'isLoggedIn'")
-      }));
+      .pipe(
+        tap((response: any) => {
+          localStorage.setItem('myEventToken', response);
+          localStorage.setItem('isLoggedIn', 'true');
+          console.log('The value of isLoggedIn:', localStorage.getItem('isLoggedIn'));
+          this.isLoggedInSubject.next(true);
+          alert('Login was successful');
+        }),
+        catchError((error: any) => {
+          // Handle error and provide feedback to the user
+          console.error('Login error:', error);
+          return throwError('Login failed. Please try again.');
+        })
+
+      );
+
   }
 
   logout() {
-    this.isLoggedIn = false;
+    this.isLoggedInSubject.next(false);
     localStorage.removeItem('myEventToken');
     localStorage.removeItem('isLoggedIn');
   }
@@ -50,6 +68,16 @@ export class UserService {
 
   deleteUserById(id: number): Observable<any> {
     return this.http.delete<any>(this.authURL + "/" + id)
+  }
+
+  determineUserRole(): void {
+    const userRoles: string[] = ['admin'];
+    // Check if the user has an admin role
+    this.isAdmin = userRoles.includes('admin');
+  }
+
+  setCurrentUserEmail(email: string): void {
+    this.currentUserEmailSubject.next(email);
   }
 
 

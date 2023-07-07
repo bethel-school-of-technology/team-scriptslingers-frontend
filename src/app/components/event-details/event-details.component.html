@@ -8,4 +8,8 @@
       <p>Host Name: {{ currentEvent.hostName }}</p>
       <p>Event Time: {{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</p>
     </mat-card-content>
+    <div *ngIf="isLoggedIn">
+  
+      <button class="btn" (click)="onDelete(currentEvent.eventId)"> Delete </button>
+  </div>
   </mat-card>

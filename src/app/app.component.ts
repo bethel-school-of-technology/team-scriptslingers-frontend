@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +10,22 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'team-scriptslingers-frontend';
-
-  isLoggedIn = true;
+  isLoggedIn: boolean = false;
   username?: string;
-  constructor(public router: Router) {}
+  userList: User[] = [];
+  currentUserEmail: string | null = null;
+
+  constructor(public router: Router, public userService: UserService) {}
+
+  ngOnInit(): void {
+     this.userService.currentUserEmail$.subscribe(email => {
+      this.currentUserEmail = email;
+    });
+  }
 
   logout() {
-    console.log("You are now logged out :)")
-    this.isLoggedIn = false;
+    this.userService.logout()
+    location.reload();
   }
   
 }

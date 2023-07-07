@@ -9,15 +9,17 @@
 
       <span class="spacer"></span>
   
-    <span *ngIf="!isLoggedIn">
+    <span *ngIf="!(userService.isLoggedIn$ | async)">
       <button mat-button routerLink="/register">Register</button>
       <button mat-button routerLink="/login">Login</button>
     </span>
   
-    <span *ngIf="isLoggedIn">
-      <span>{{ username }}</span>
+    <span *ngIf="userService.isLoggedIn$ |async">
+      <span>Welcome, {{ currentUserEmail }}</span>
       <button mat-button (click)="logout()">Logout</button>
     </span>
+
+   
   
 </mat-toolbar>
 
