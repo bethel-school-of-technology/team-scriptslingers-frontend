@@ -5,7 +5,26 @@
   </div>
 
   <div class="section1">
-    <!-- Content for the second section -->
+    <div *ngIf="userService.isLoggedIn$ |async">
+    <!-- <div *ngIf="userService.isAdmin"> -->
+    <button class="btn" [routerLink]='["/event-create"]'> Create Event </button>
+  <!-- </div> -->
+</div>
+    <div *ngFor="let event of eventList">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ event.eventTitle }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Description: {{ event.description }}</p>
+        <p>Location: {{ event.location }}</p>
+        <p>Host Name: {{ event.hostName }}</p>
+        <p>Event Time: {{ event.eventTime | date: 'MMM d, y, h:mm a' }}</p>
+        <button class="btn" [routerLink]='["/event-details", event.eventId]'> Details </button>
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
   </div>
 
   <div class="section2">
