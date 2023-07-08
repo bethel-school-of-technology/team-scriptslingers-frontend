@@ -18,7 +18,7 @@
     </span>
   
     <span *ngIf="userService.isLoggedIn$ |async">
-      <span>Welcome, {{ currentUserEmail }}</span>
+      <span>Welcome, {{firstName}} {{lastName}}</span>
       <button mat-button (click)="logout()">Logout</button>
     </span>
 
@@ -27,3 +27,4 @@
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+
