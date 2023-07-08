@@ -10,7 +10,6 @@ import { EventCreateComponent } from './components/event-create/event-create.com
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +25,9 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CommentCreateComponent } from './components/comment-create/comment-create.component';
 import { CommentDetailsComponent } from './components/comment-details/comment-details.component';
 import { CommentEditComponent } from './components/comment-edit/comment-edit.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,6 @@ import { CommentEditComponent } from './components/comment-edit/comment-edit.com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NoopAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     FormsModule,
@@ -57,7 +58,10 @@ import { CommentEditComponent } from './components/comment-edit/comment-edit.com
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDividerModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
