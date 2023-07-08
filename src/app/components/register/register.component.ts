@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent implements OnInit {
 
   newUser: User = new User();
+  hide = true;
 
   constructor(private userService: UserService, private router: Router) { }
 
