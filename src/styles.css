@@ -2,10 +2,3 @@
 
 html, body { height: 100%; }
 body { background-color: rgb(243, 243, 230); margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.centerCard {
-    max-width: 450px;
-    max-height: 450px;
-    text-align: center;
-    margin: 10% auto;
-}
