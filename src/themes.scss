@@ -2,7 +2,7 @@
 @include mat-core();
 
 $my-custom-primary: mat-palette($mat-teal,900);
-$my-custom-accent: mat-palette($mat-orange);
+$my-custom-accent: mat-palette($mat-orange,300);
 $my-custom-warn: mat-palette($mat-deep-orange);
 $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
 @include angular-material-theme($my-custom-theme);

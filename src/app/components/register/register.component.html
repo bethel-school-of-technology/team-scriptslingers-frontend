@@ -1,21 +1,42 @@
-<div class="whole">
-    <form (ngSubmit)="signUp()">
-        <h1>REGISTER</h1>
+<div id="registerDiv">
+  <mat-card class="centerCard">
+      <mat-card-title>Missouri Wild and Wonderful</mat-card-title>
+
+      <mat-card-content>
+        <form #form="ngForm"(ngSubmit)="signUp()">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" name="firstName" [(ngModel)]="newUser.firstName">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" name="lastName" [(ngModel)]="newUser.lastName">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" name="email" [(ngModel)]="newUser.email">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="newUser.password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+
+          <button type="submit" mat-flat-button color="primary">Sign Up</button>
+        </form> 
+          
+        <mat-divider></mat-divider>
+      </mat-card-content>
     
-        <span>First Name  </span>
-        <input placeholder="Enter First Name" type="text" name="firstName" [(ngModel)]="newUser.firstName"><br><br>
-    
-        <span>Last Name  </span>
-        <input placeholder="Enter Last Name" type="text" name="lastName" [(ngModel)]="newUser.lastName"><br><br>
-    
-        <span>Email  </span>
-        <input placeholder="Enter Email" type="text" name="email" [(ngModel)]="newUser.email"><br><br>
-       
-        <span>Password  </span>
-        <input placeholder="Enter Password" type="text" name="password" [(ngModel)]="newUser.password"><br><br>
-        
-        <button>
-          Sign Up
-        </button>
-    </form>
-    </div>
+      <mat-card-actions>
+          <button mat-flat-button color="accent" routerLink="/login">Already have an account?</button>
+      </mat-card-actions>
+
+  </mat-card>
+</div>

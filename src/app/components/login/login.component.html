@@ -1,15 +1,30 @@
-<div class="whole">
-    <form (ngSubmit)="signin()">
-        <h1>LOGIN</h1>
-        <span>Email  </span>
-        <input placeholder="Enter email" type="text" name="email" [(ngModel)]="email">
-        <br><br>
-        <span>Password  </span>
-        <input placeholder="Enter password" type="password" name="password" [(ngModel)]="password">
-        <br><br>
-        
-        <button>
-          Login
-        </button>
-    </form>
-    </div>
+<div id="loginDiv">
+  <mat-card class="centerCard">
+      <mat-card-title>Missouri Wild and Wonderful</mat-card-title>
+
+      <mat-card-content>
+        <form #form="ngForm"(ngSubmit)="signin()">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" name="email" [(ngModel)]="email">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+          <button type="submit" mat-flat-button color="primary">Log In</button>
+        </form>   
+        <mat-divider></mat-divider>
+      </mat-card-content>
+    
+      <mat-card-actions>
+          <button mat-flat-button color="accent" routerLink="/register">Create new account</button>
+      </mat-card-actions>
+
+  </mat-card>
+</div>

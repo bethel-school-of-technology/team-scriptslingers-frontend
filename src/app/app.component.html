@@ -1,4 +1,5 @@
-<mat-toolbar color="primary">
+<mat-toolbar id="navBar" color="primary">
+    <img id ="logo" src="assets/wildwonderfullogooutline.png" alt="wildwonderful logo">
     <span *ngIf="router.url === '/home'">
         <span>Missouri Wild and Wonderful</span>
     </span>
@@ -10,8 +11,10 @@
       <span class="spacer"></span>
   
     <span *ngIf="!(userService.isLoggedIn$ | async)">
-      <button mat-button routerLink="/register">Register</button>
-      <button mat-button routerLink="/login">Login</button>
+      <span *ngIf="(router.url !== '/register') && (router.url !== '/login')">
+        <button mat-button routerLink="/register">Register</button>
+        <button mat-button routerLink="/login">Login</button>
+      </span>
     </span>
   
     <span *ngIf="userService.isLoggedIn$ |async">

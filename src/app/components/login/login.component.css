@@ -1,0 +1,34 @@
+#loginDiv {
+    background-image: url("/assets/wildwonderfullogooutline.png");
+    background-position: center center;
+    margin: auto;
+    width: 950px;
+    height: 850px;
+    display: flex;
+    justify-content: center;
+}
+
+.centerCard {
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+
+mat-card-title {
+    margin: 20px 0px;
+}
+
+mat-form-field {
+    width: 250px;
+}
+
+mat-divider {
+    margin: 10px 0px;
+}
+
+button {
+    width: 250px;
+    height: 55px;
+    margin: 10px;
+}
