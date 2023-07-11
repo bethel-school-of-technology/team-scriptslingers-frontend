@@ -32,7 +32,7 @@ export class UserService {
     return this.http.get(`${this.authURL}/login`, { params: queryParams, responseType: 'text' })
       .pipe(
         tap((response: any) => {
-          localStorage.setItem('myEventToken', response);
+          localStorage.setItem('MoWildToken', response);
           localStorage.setItem('isLoggedIn', 'true');
           console.log('The value of isLoggedIn:', localStorage.getItem('isLoggedIn'));
           this.isLoggedInSubject.next(true);
@@ -50,7 +50,7 @@ export class UserService {
 
   logout() {
     this.isLoggedInSubject.next(false);
-    localStorage.removeItem('myEventToken');
+    localStorage.removeItem('MoWildToken');
     localStorage.removeItem('isLoggedIn');
   }
 
