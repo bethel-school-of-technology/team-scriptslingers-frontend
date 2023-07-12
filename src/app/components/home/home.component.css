@@ -16,9 +16,19 @@
     height: 100vh; 
     background-image: url('https://th.bing.com/th/id/R.d099981b913dd021f8e07aa230cd398b?rik=yhTE05KYiA7%2bCg&pid=ImgRaw&r=0');
     background-size: cover;
-   
   }
   
+  img{
+    display: flex;
+    width: 100%;
+  }
+
+  .events {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+  }
   
 
 

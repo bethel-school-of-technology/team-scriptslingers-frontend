@@ -2,6 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,9 @@ export class UserService {
   currentUser: any;
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  private isAdminSubject = new BehaviorSubject<boolean>(false);
+  isAdmin$ = this.isAdminSubject.asObservable();
 
   private currentUserEmailSubject = new BehaviorSubject<string | null>(null);
   currentUserEmail$ = this.currentUserEmailSubject.asObservable();
@@ -35,7 +40,18 @@ export class UserService {
           localStorage.setItem('MoWildToken', response);
           localStorage.setItem('isLoggedIn', 'true');
           console.log('The value of isLoggedIn:', localStorage.getItem('isLoggedIn'));
+
+          // Decode the JWT token
+          const token = response;
+          const jwtHelper = new JwtHelperService();
+          const decodedToken = jwtHelper.decodeToken(token);
+          console.log('decoded token', decodedToken);
+          const isAdmin = decodedToken.isAdmin.toLowerCase() === 'true';
+
+          this.isAdminSubject.next(isAdmin);
+
           this.isLoggedInSubject.next(true);
+
           alert('Login was successful');
         }),
         catchError((error: any) => {
@@ -71,9 +87,9 @@ export class UserService {
   }
 
   determineUserRole(): void {
-    const userRoles: string[] = ['admin'];
+    const userRoles: string[] = ['isAdmin'];
     // Check if the user has an admin role
-    this.isAdmin = userRoles.includes('admin');
+    this.isAdmin = userRoles.includes('isAdmin');
   }
 
   setCurrentUserEmail(email: string): void {

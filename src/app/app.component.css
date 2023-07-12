@@ -12,3 +12,13 @@
     top: 0;
     z-index: 1000;
 }
+
+@media (max-width: 768px) {
+      #navBar span.missouri-text{
+        display: none;
+    }
+    #navBar{
+        flex-wrap: wrap;
+        height: 75px;
+    }
+}
