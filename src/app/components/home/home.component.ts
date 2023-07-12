@@ -21,11 +21,12 @@ export class HomeComponent implements OnInit {
 
   eventList: Event[] = [];
   isLoggedIn: boolean | undefined;
+  isAdmin: boolean | undefined;
 
   constructor(private eventService: EventService, public userService: UserService, private router: Router, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.eventService.getAllEvents().subscribe((foundEvents: Event[]) => {
+    this.eventService.getAllFutureEvent().subscribe((foundEvents: Event[]) => {
       console.log(foundEvents);
       this.eventList = foundEvents;
     });
@@ -35,6 +36,13 @@ export class HomeComponent implements OnInit {
       this.cdRef.detectChanges();
       console.log('isLoggedIn', isLoggedIn)
     });
+
+    this.userService.isAdmin$.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
+      this.cdRef.detectChanges();
+      console.log('isAdmin', isAdmin)
+    });
+
 
   }
 
