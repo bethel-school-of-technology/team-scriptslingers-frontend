@@ -1,1 +1,21 @@
-<p>calendar works!</p>
+<div class="outerDiv">
+    <div>
+        <h1>Upcoming Events</h1>
+        <div>
+            <mat-card *ngFor="let event of eventList">
+                <div id="content">
+                    <div>
+                        <mat-card-title>{{ event.eventTitle }}</mat-card-title>
+                        <mat-card-subtitle>Event Time: {{ event.eventTime | date: 'MMM d, y, h:mm a' }}</mat-card-subtitle>
+                    </div>
+                    <span class="spacer"></span>
+                    <button mat-flat-button color="primary" [routerLink]='["/event-details", event.eventId]'> Details </button>  
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div>
+        <p>hi</p>
+        <router-outlet></router-outlet>
+    </div>
+</div>

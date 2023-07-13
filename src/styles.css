@@ -5,3 +5,13 @@ body { background-color: rgb(243, 243, 230); margin: 0;}
 *{
      font-family: 'Source Serif 4', serif; 
 }
+
+.outerDiv {
+     margin: 25px;
+ }
+
+.centerCard {
+     text-align: center;
+     margin: auto;
+     padding: 20px;
+ }
