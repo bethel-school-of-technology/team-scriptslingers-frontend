@@ -3,42 +3,32 @@
 <img src="assets/Home_Main.jpg">
 
 <div class="section1">
-  <div *ngIf="(userService.isAdmin$ | async) === true">
-    <button class="btn" [routerLink]='["/event-create"]'> Create Event </button>
-  </div>
-
-  
-
+   
   <div *ngFor="let event of eventList; let i = index">
     <ng-container *ngIf="i < 2">
-  
-    <mat-card class="events">
+    <mat-card class="btn" [routerLink]='["/event-details", event.eventId]' class="events">
       <mat-card-header>
         <mat-card-title>{{ event.eventTitle }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <p>Description: {{ event.description }}</p>
-        <p>Location: {{ event.location }}</p>
         <p>Host Name: {{ event.hostName }}</p>
-        <p>Event Time: {{ event.eventTime | date: 'MMM d, y, h:mm a' }}</p>
-        <button class="btn" [routerLink]='["/event-details", event.eventId]'> Details </button>
       </mat-card-content>
     </mat-card>
-
   </ng-container>
   </div>
 
 </div>
 
-<div class="parallax-container">
+<!-- <div class="parallax-container">
   <div class="foreground-image"></div>
   <div class="background-image"></div>
-</div>
+</div> -->
 
-<div class="section2">
+<!-- <div class="section2"> -->
   <!-- Content for the second section -->
-</div>
+<!-- </div> -->
 
-<div class="section3">
+<!-- <div class="section3"> -->
   <!-- Content for the first section -->
-</div>
+<!-- </div> -->
