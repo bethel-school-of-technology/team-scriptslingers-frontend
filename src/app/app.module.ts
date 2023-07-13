@@ -28,6 +28,7 @@ import { CommentEditComponent } from './components/comment-edit/comment-edit.com
 import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatIconModule} from '@angular/material/icon';
     PostEditComponent,
     CommentCreateComponent,
     CommentDetailsComponent,
-    CommentEditComponent
+    CommentEditComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

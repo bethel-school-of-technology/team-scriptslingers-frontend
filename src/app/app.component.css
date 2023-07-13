@@ -18,7 +18,15 @@
         display: none;
     }
     #navBar{
-        flex-wrap: wrap;
+        display: flexbox;
+        justify-content: end;
+        font-size: x-small;
+        flex-wrap: nowrap;
         height: 75px;
     }
 }
+
+mat-toolbar .register-login{
+    margin-left: auto;
+}
+
