@@ -37,7 +37,7 @@ export class EventService {
     return this.http.post(this.baseURL, newEvent, { headers: reqHeaders });
   }
 
-  editEvent(eventId: number, editedEvent: Event) {
+  editEvent(eventId: number, editedEvent: Event): Observable<Event> {
     let reqHeaders = {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
   }

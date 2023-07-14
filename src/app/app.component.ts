@@ -25,7 +25,7 @@ export class AppComponent {
       this.currentUserEmail = email;
     });
 
-    const token = localStorage.getItem('myEventToken');
+    const token = localStorage.getItem('MoWildToken');
     if (token) {
       const decodedToken: any = jwt_decode(token);
       this.firstName = decodedToken.given_name;

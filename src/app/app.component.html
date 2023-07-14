@@ -1,7 +1,8 @@
+
 <mat-toolbar id="navBar" color="primary">
     <img id ="logo" src="assets/wildwonderfullogooutline.png" alt="wildwonderful logo">
     <span *ngIf="router.url === '/home'">
-        <span>Missouri Wild and Wonderful</span>
+        <span class="missouri-text">Missouri Wild and Wonderful</span>
     </span>
 
     <span *ngIf="!(router.url === '/home')">
@@ -9,18 +10,26 @@
     </span>
 
       <span class="spacer"></span>
-  
-    <span *ngIf="!(userService.isLoggedIn$ | async)">
+
+      <span>
+        <button mat-button routerLink="/about">About</button>
+      </span>
+      <div class="container">
+    <span class="register-login" *ngIf="!(userService.isLoggedIn$ | async)">
       <span *ngIf="(router.url !== '/register') && (router.url !== '/login')">
         <button mat-button routerLink="/register">Register</button>
         <button mat-button routerLink="/login">Login</button>
       </span>
     </span>
   
-    <span *ngIf="userService.isLoggedIn$ |async">
-      <span>Welcome, {{firstName}} {{lastName}}</span>
-      <button mat-button (click)="logout()">Logout</button>
+    <span class="register-login" *ngIf="userService.isLoggedIn$ |async" class="welcome-container">
+      <span class="welcome-message">Welcome, {{firstName}} {{lastName}}</span><br>
+      <span *ngIf="(userService.isAdmin$ | async) === true">
+        <button mat-button routerLink="/event-create"> Create Event </button>
+      </span>
+      <button mat-button class="logout-button" (click)="logout()">Logout</button>
     </span>
+  </div>
 
    
   
