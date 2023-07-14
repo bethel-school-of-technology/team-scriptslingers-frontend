@@ -11,14 +11,28 @@ import { Event } from 'src/app/models/event';
 })
 export class CalendarComponent implements OnInit {
   eventList: Event[] = [];
-
+  eventId?: number;
+  currentEvent: Event = new Event();
+  
   constructor(private eventService: EventService, public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.eventService.getAllFutureEvent().subscribe(events => {
       console.log(events);
       this.eventList = events;
+      this.eventId = this.eventList[0].eventId;
+      this.showEventDetails(this.eventId)
     });
+  }
+
+  showEventDetails(currentId?: number) {
+    this.eventId = currentId;
+    this.eventService.getEventById(this.eventId).subscribe(foundEvent => {
+      console.log(foundEvent);
+      this.currentEvent = foundEvent;
+  });
+    console.log(this.eventId);
+    console.log(this.currentEvent);
   }
 
 }

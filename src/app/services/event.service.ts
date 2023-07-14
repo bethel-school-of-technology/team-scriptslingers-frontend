@@ -22,7 +22,7 @@ export class EventService {
     return this.http.get<Event[]>(this.baseURL + "/future-events");
   }
 
-  getEventById(eventId: number): Observable<Event> {
+  getEventById(eventId?: number): Observable<Event> {
     return this.http.get<Event>(this.baseURL + "/" + eventId);
   }
 
