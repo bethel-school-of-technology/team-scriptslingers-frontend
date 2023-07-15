@@ -83,11 +83,15 @@ export class EventDetailsComponent implements OnInit {
   signUp(eventId: number | undefined){
     if (this.currentEvent.attendeeList == null || this.currentEvent.attendeeList == "" || this.currentEvent.attendeeList == "string"){
       this.currentEvent.attendeeList = this.username;
+      this.eventService.editEvent(eventId, this.currentEvent);
+      console.log(this.currentEvent.attendeeList);
     } else {
       this.currentEvent.attendeeList = `${this.currentEvent.attendeeList}, ${this.username}`;
+      this.eventService.editEvent(eventId, this.currentEvent);
+      console.log(this.currentEvent.attendeeList);
     }
-    console.log(this.currentEvent.attendeeList);
-    this.eventService.editEvent(eventId, this.currentEvent);
+    
+    
     this.router.navigate(["home"]);
     
   }
