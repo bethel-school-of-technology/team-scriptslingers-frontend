@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { AboutComponent } from './components/about/about.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ResourcesComponent } from './components/resources/resources.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     CommentCreateComponent,
     CommentDetailsComponent,
     CommentEditComponent,
-    AboutComponent
+    AboutComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
