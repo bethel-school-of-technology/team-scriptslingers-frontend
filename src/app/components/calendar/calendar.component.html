@@ -1,1 +1,34 @@
-<p>calendar works!</p>
+<div class="outerDiv">
+    <div>
+        <h1>Upcoming Events</h1>
+        <div>
+            <mat-card *ngFor="let event of eventList">
+                <div id="content">
+                    <div>
+                        <mat-card-title>{{ event.eventTitle }}</mat-card-title>
+                        <mat-card-subtitle>Event Time: {{ event.eventTime | date: 'MMM d, y, h:mm a' }}</mat-card-subtitle>
+                    </div>
+                    <span class="spacer"></span>
+                    <button mat-flat-button color="primary" (click)="showEventDetails(event.eventId)"> Details </button>  
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div id="secondDiv">
+        <h1>Details</h1>
+        <div>
+            <mat-card class="centerCard">
+                <mat-card-title>{{ currentEvent.eventTitle }}</mat-card-title>
+                <mat-card-subtitle><strong>{{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</strong></mat-card-subtitle>
+                <mat-card-content>
+                    <p>Location: {{ currentEvent.location }}</p>
+                    <p>Description: {{ currentEvent.description }}</p>
+                    <p>Host Name: {{ currentEvent.hostName }}</p>
+                </mat-card-content>
+                <!-- <div *ngIf="isLoggedIn">
+                    <button class="btn" (click)="onDelete(currentEvent.eventId)"> Delete </button>
+                </div> -->
+            </mat-card>
+        </div>
+    </div>
+</div>

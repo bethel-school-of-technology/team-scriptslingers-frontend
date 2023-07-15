@@ -1,16 +1,15 @@
-<mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ currentEvent.eventTitle }}</mat-card-title>
-    </mat-card-header>
+<div class="outerDiv">
+  <mat-card class="centerCard">
+    <mat-card-title>{{ currentEvent.eventTitle }}</mat-card-title>
     <mat-card-content>
-      <p>Description: {{ currentEvent.description }}</p>
-      <p>Location: {{ currentEvent.location }}</p>
-      <p>Host Name: {{ currentEvent.hostName }}</p>
-      <p>Event Time: {{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</p>
+        <p>Description: {{ currentEvent.description }}</p>
+        <p>Location: {{ currentEvent.location }}</p>
+        <p>Host Name: {{ currentEvent.hostName }}</p>
+        <p>Event Time: {{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</p>
     </mat-card-content>
     <button class="btn" [routerLink]='["/home"]'>Back</button>
     <div *ngIf="isLoggedIn">
-            <button class="btn" [routerLink]='["/event-edit", currentEvent.eventId]'>Edit</button>
+      <button class="btn" [routerLink]='["/event-edit", currentEvent.eventId]'>Edit</button>
       <button class="btn" (click)="onDelete(currentEvent.eventId)"> Delete </button>
       <div *ngIf="!inEvent">
         <button class="btn" (click)="signUp(currentEvent.eventId)"> Sign Up</button>
@@ -18,6 +17,5 @@
       <div *ngIf="inEvent">
         <button class="btn" (click)="cancel(currentEvent.eventId)"> Cancel</button>
       </div>
-      
-  </div>
   </mat-card>
+</div>

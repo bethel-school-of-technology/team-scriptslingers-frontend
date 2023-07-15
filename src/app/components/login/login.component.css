@@ -10,9 +10,6 @@
 
 .centerCard {
     width: 340px;
-    text-align: center;
-    margin: 50px;
-    padding: 20px;
 }
 
 mat-card-title {
