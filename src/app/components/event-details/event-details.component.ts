@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from 'src/app/models/event';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-event-details',
@@ -14,24 +15,49 @@ export class EventDetailsComponent implements OnInit {
   currentEvent: Event = new Event(this.eventId);
   eventList: Event[] = [];
   isLoggedIn: boolean | undefined;
+  username: string = "not logged in";
+  inEvent: boolean | undefined;
 
   constructor(private eventService: EventService, private userService: UserService, private actRoute: ActivatedRoute, private router: Router, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     const routeId = this.actRoute.snapshot.paramMap.get("id") ?? "";
-  console.log('routeId', routeId)
-  this.eventId = parseInt(routeId);
-  this.eventService.getEventById(this.eventId).subscribe(foundEvent => {
+    console.log('routeId', routeId)
+    this.eventId = parseInt(routeId);
+    var tempAttendeeList: string | undefined;
+
+    this.eventService.getEventById(this.eventId).subscribe(foundEvent => {
       console.log(foundEvent);
       this.currentEvent = foundEvent;
+
+      // until line 46 is code for seeing if a user is signed up for the current event
+      tempAttendeeList = foundEvent.attendeeList;
+
+      const token = localStorage.getItem('MoWildToken');
+      if (token) {
+        this.isLoggedIn = true;
+        const decodedToken: any = jwt_decode(token);
+        this.username = `${decodedToken.given_name} ${decodedToken.family_name}`;
+
+        if(tempAttendeeList?.includes(this.username)){
+          this.inEvent = true;
+          console.log(this.inEvent);
+        } else {
+          this.inEvent = false;
+          console.log(this.inEvent);
+        }
+      }
     });
 
     this.userService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       this.cdRef.detectChanges();
       console.log('isLoggedIn', isLoggedIn)
-    })
+    });
+
     
+    
+
   }
 
   onDelete(eventId: number | undefined) {
@@ -52,6 +78,28 @@ export class EventDetailsComponent implements OnInit {
     } else {
       console.log('id is undefined');
     }
+  }
+
+  signUp(eventId: number | undefined){
+    if (this.currentEvent.attendeeList == null || this.currentEvent.attendeeList == "" || this.currentEvent.attendeeList == "string"){
+      this.currentEvent.attendeeList = this.username;
+      this.eventService.editEvent(eventId, this.currentEvent);
+      console.log(this.currentEvent.attendeeList);
+    } else {
+      this.currentEvent.attendeeList = `${this.currentEvent.attendeeList}, ${this.username}`;
+      this.eventService.editEvent(eventId, this.currentEvent);
+      console.log(this.currentEvent.attendeeList);
+    }
+    
+    
+    this.router.navigate(["home"]);
+    
+  }
+
+  cancel(eventId: number | undefined){
+    
+    console.log("User pressed the cancel button:", this.username);
+    this.router.navigate([`home`]);
   }
 
 }

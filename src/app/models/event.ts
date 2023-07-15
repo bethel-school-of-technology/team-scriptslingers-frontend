@@ -6,8 +6,9 @@ export class Event {
     hostName?: string;
     eventTime?: Date;
     isFinished?: boolean;
+    attendeeList?: string;
 
-    constructor(eventId?: number, eventTitle?: string, description?: string, location?: string, hostName?: string, eventTime?: Date, isFinished?: boolean) {
+    constructor(eventId?: number, eventTitle?: string, description?: string, location?: string, hostName?: string, eventTime?: Date, isFinished?: boolean, attendeeList?: string) {
         this.eventId = eventId;
         this.eventTitle = eventTitle;
         this.description = description;
@@ -15,5 +16,6 @@ export class Event {
         this.hostName = hostName;
         this.eventTime = eventTime;
         this.isFinished = isFinished;
+        this.attendeeList = attendeeList;
     }
 }
