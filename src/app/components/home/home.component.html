@@ -1,29 +1,43 @@
-
 <div class="section1">
-  <div class="image-container">
+  <div>
 
     <div class="image1"></div>
 
     <div class="image2">
       <br>
       <br>
-      <h1 class="upcoming">Upcoming Events</h1>
+      <h1 class="upcoming" color="primary">Upcoming Events</h1>
       <mat-grid-list [cols]="getGridColumns()" rowHeight="300px">
-      <mat-grid-tile *ngFor="let event of eventList; let i = index">
-        <ng-container *ngIf="i < 2">
-          <mat-card class="btn" [routerLink]='["/event-details", event.eventId]' class="events">
-            <mat-card-header>
-              <mat-card-title>{{ event.eventTitle }}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <p>Description: {{ event.description }}</p>
-              <p>Host Name: {{ event.hostName }}</p>
-            </mat-card-content>
-          </mat-card>
-        </ng-container>
-      </mat-grid-tile>
-    </mat-grid-list>
+        <mat-grid-tile *ngFor="let event of eventList; let i = index">
+          <ng-container *ngIf="i < 2">
+            <mat-card class="btn" [routerLink]='["/event-details", event.eventId]' class="events">
+              <mat-card-header>
+                <mat-card-title>{{ event.eventTitle }}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>Description: {{ event.description }}</p>
+                <p>Host Name: {{ event.hostName }}</p>
+              </mat-card-content>
+            </mat-card>
+          </ng-container>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div class="image-container" routerLink="/about">
+        <div class="oval-image">
+          <img src="/assets/Autumn_About.png" alt="About">
+        </div>
+
+        <div class="aboutAutumn">With a vision to create community for her children and bring balance into her life by adding
+          outdoor activities Autumn Bear birthed MO Wild+Wonderful.
+        </div>
+
+      </div>
+
+
     </div>
+
+
 
   </div>
 </div>
