@@ -21,9 +21,9 @@
                 <mat-card-title>{{ currentEvent.eventTitle }}</mat-card-title>
                 <mat-card-subtitle><strong>{{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</strong></mat-card-subtitle>
                 <mat-card-content>
-                    <p>Location: {{ currentEvent.location }}</p>
-                    <p>Description: {{ currentEvent.description }}</p>
+                    <!-- <p>Location: {{ currentEvent.location }}</p> -->
                     <p>Host Name: {{ currentEvent.hostName }}</p>
+                    <p>Description: {{ currentEvent.description }}</p>
                 </mat-card-content>
                 <!-- <div *ngIf="isLoggedIn">
                     <button class="btn" (click)="onDelete(currentEvent.eventId)"> Delete </button>

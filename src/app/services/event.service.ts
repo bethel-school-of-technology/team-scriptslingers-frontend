@@ -41,7 +41,7 @@ export class EventService {
     let reqHeaders = {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.put(this.baseURL + "/" + eventId, editedEvent, { headers: reqHeaders });
+    return this.http.put<Event>(this.baseURL + "/" + eventId, editedEvent, { headers: reqHeaders });
   }
 
   deleteEvent(eventId: number) {
