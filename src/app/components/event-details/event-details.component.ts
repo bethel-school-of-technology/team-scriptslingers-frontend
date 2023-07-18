@@ -109,8 +109,10 @@ export class EventDetailsComponent implements OnInit {
           tempList.splice(i, 1);
           this.currentEvent.attendeeList = tempList.join(", ");
 
-          this.eventService.editEvent(eventId, this.currentEvent);
-          this.router.navigate([`home`]);
+          this.eventService.editEvent(eventId, this.currentEvent).subscribe(edittedEvent => {
+            console.log(edittedEvent);
+            this.router.navigate(["home"]);
+          });
         }
       }
     }
