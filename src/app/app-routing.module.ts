@@ -14,6 +14,7 @@ import { CommentCreateComponent } from './components/comment-create/comment-crea
 import { CommentDetailsComponent } from './components/comment-details/comment-details.component';
 import { CommentEditComponent } from './components/comment-edit/comment-edit.component';
 import { AboutComponent } from './components/about/about.component';
+import { ResourcesComponent } from './components/resources/resources.component';
 
 const routes: Routes = [
   {path: "",redirectTo: "/home",pathMatch: "full"},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: "register",component: RegisterComponent},
   {path: "home",component: HomeComponent},
   {path: "about", component: AboutComponent},
+  {path: "resources", component: ResourcesComponent},
   {path: "calendar", component: CalendarComponent},
   {path: "event-create", component: EventCreateComponent},
   {path: "event-details/:id", component: EventDetailsComponent},

@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
   username: string = "not logged in";
   inEvent: boolean | undefined;
 
-  constructor(private eventService: EventService, private userService: UserService, private actRoute: ActivatedRoute, private router: Router, private cdRef: ChangeDetectorRef) { }
+  constructor(private eventService: EventService, public userService: UserService, private actRoute: ActivatedRoute, private router: Router, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     const routeId = this.actRoute.snapshot.paramMap.get("id") ?? "";
@@ -33,6 +33,7 @@ export class EventDetailsComponent implements OnInit {
 
       // until line 46 is code for seeing if a user is signed up for the current event
       tempAttendeeList = foundEvent.attendeeList;
+      console.log(tempAttendeeList);
 
       const token = localStorage.getItem('MoWildToken');
       if (token) {
@@ -84,18 +85,17 @@ export class EventDetailsComponent implements OnInit {
   signUp(eventId: number | undefined){
     if (this.currentEvent.attendeeList == null || this.currentEvent.attendeeList == "" || this.currentEvent.attendeeList == "string"){
       this.currentEvent.attendeeList = this.username;
-      this.eventService.editEvent(eventId, this.currentEvent);
-      console.log(this.currentEvent.attendeeList);
+      this.eventService.editEvent(eventId, this.currentEvent).subscribe(edittedEvent => {
+        console.log(edittedEvent);
+        this.router.navigate(["home"]);
+      })
     } else {
       this.currentEvent.attendeeList = `${this.currentEvent.attendeeList}, ${this.username}`;
-      this.eventService.editEvent(eventId, this.currentEvent);
-      console.log(this.currentEvent.attendeeList);
-      
+      this.eventService.editEvent(eventId, this.currentEvent).subscribe(edittedEvent => {
+        console.log(edittedEvent);
+        this.router.navigate(["home"]);
+      });
     }
-    
-    
-    this.router.navigate(["home"]);
-    
   }
 
   cancel(eventId: number | undefined){
