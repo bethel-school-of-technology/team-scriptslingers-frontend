@@ -15,10 +15,10 @@
       <button class="btn" [routerLink]='["/event-edit", currentEvent.eventId]'>Edit</button>
       <button class="btn" (click)="onDelete(currentEvent.eventId)"> Delete </button>
       <div *ngIf="!inEvent">
-        <button class="btn" (click)="signUp(currentEvent.eventId)"> Sign Up</button>
+        <button class="btn" (click)="signUp()"> Sign Up</button>
       </div>
       <div *ngIf="inEvent">
-        <button class="btn" (click)="cancel(currentEvent.eventId)"> Cancel</button>
+        <button class="btn" (click)="cancel()"> Cancel</button>
       </div>
     </div>
   </mat-card>

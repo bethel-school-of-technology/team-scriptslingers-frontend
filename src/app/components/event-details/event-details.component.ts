@@ -82,23 +82,23 @@ export class EventDetailsComponent implements OnInit {
     }
   }
 
-  signUp(eventId: number | undefined){
+  signUp(){
     if (this.currentEvent.attendeeList == null || this.currentEvent.attendeeList == "" || this.currentEvent.attendeeList == "string"){
       this.currentEvent.attendeeList = this.username;
-      this.eventService.editEvent(eventId, this.currentEvent).subscribe(edittedEvent => {
+      this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
         console.log(edittedEvent);
         this.router.navigate(["home"]);
       })
     } else {
       this.currentEvent.attendeeList = `${this.currentEvent.attendeeList}, ${this.username}`;
-      this.eventService.editEvent(eventId, this.currentEvent).subscribe(edittedEvent => {
+      this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
         console.log(edittedEvent);
         this.router.navigate(["home"]);
       });
     }
   }
 
-  cancel(eventId: number | undefined){
+  cancel(){
     var tempList = this.currentEvent.attendeeList?.split(", ");
     console.log("tempList", tempList);
     
@@ -109,7 +109,7 @@ export class EventDetailsComponent implements OnInit {
           tempList.splice(i, 1);
           this.currentEvent.attendeeList = tempList.join(", ");
 
-          this.eventService.editEvent(eventId, this.currentEvent).subscribe(edittedEvent => {
+          this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
             console.log(edittedEvent);
             this.router.navigate(["home"]);
           });
