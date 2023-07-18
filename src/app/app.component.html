@@ -30,9 +30,9 @@
       </span>
     </span>
   
-    <span class="register-login" *ngIf="userService.isLoggedIn$ |async" class="welcome-container">
+    <span class="register-login" *ngIf="isLoggedIn" class="welcome-container">
       <span class="welcome-message">Welcome, {{firstName}} {{lastName}}</span><br>
-      <span *ngIf="(userService.isAdmin$ | async) === true">
+      <span *ngIf="isAdmin">
         <button mat-button routerLink="/event-create"> Create Event </button>
       </span>
       <button mat-button class="logout-button" (click)="logout()">Logout</button>

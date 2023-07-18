@@ -34,17 +34,17 @@ export class HomeComponent implements OnInit {
       this.eventList = foundEvents;
     });
 
-    this.userService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-      this.cdRef.detectChanges();
-      console.log('isLoggedIn', isLoggedIn)
-    });
+    // this.userService.isLoggedIn$.subscribe(isLoggedIn => {
+    //   this.isLoggedIn = isLoggedIn;
+    //   this.cdRef.detectChanges();
+    //   console.log('isLoggedIn', isLoggedIn)
+    // });
 
-    this.userService.isAdmin$.subscribe(isAdmin => {
-      this.isAdmin = isAdmin;
-      this.cdRef.detectChanges();
-      console.log('isAdmin', isAdmin)
-    });
+    // this.userService.isAdmin$.subscribe(isAdmin => {
+    //   this.isAdmin = isAdmin;
+    //   this.cdRef.detectChanges();
+    //   console.log('isAdmin', isAdmin)
+    // });
 
     this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small])
       .subscribe((state: BreakpointState) => {
