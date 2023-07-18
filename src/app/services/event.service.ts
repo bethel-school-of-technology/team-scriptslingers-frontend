@@ -50,4 +50,8 @@ export class EventService {
   }
     return this.http.delete(this.baseURL + "/" + eventId, { headers: reqHeaders })
   }
+
+  updateAttendees(newEvent: Event): Observable<Event> {
+    return this.http.put<Event>(this.baseURL + "/attendee-update", newEvent);
+  }
 }
