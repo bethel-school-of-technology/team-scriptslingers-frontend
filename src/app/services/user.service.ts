@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Location } from '@angular/common';
 
 
 @Injectable({
@@ -21,9 +22,15 @@ export class UserService {
   private currentUserEmailSubject = new BehaviorSubject<string | null>(null);
   currentUserEmail$ = this.currentUserEmailSubject.asObservable();
 
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  currentUser$ = this.currentUserSubject.asObservable();
+
   isAdmin: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private location: Location) { 
+    this.checkAuthState();
+
+  }
 
   signUp(newUser: User): Observable<User> {
     return this.http.post<User>(`${this.authURL}/register`, newUser);
@@ -51,7 +58,7 @@ export class UserService {
           this.isAdminSubject.next(isAdmin);
 
           this.isLoggedInSubject.next(true);
-
+  
           alert('Login was successful');
         }),
         catchError((error: any) => {
@@ -94,6 +101,52 @@ export class UserService {
 
   setCurrentUserEmail(email: string): void {
     this.currentUserEmailSubject.next(email);
+  }
+
+  setCurrentUser(firstName: string, lastName: string): void{
+    const currentUser: User = {
+      firstName: firstName,
+      lastName: lastName
+    };
+
+    this.currentUserSubject.next(currentUser);
+  }
+
+  isAuthenticated(): boolean{
+    return this.isLoggedInSubject.value;
+  }
+
+  authStateChanged(): Observable<boolean>{
+    return this.isLoggedInSubject.asObservable();
+  }
+
+  adminStateChanged():Observable<boolean>{
+    return this.isAdminSubject.asObservable();
+  }
+
+  getIsAdmin(): boolean {
+    return this.isAdminSubject.value;
+  }
+
+  private checkAuthState(): void {
+    const token = localStorage.getItem('MoWildToken'); // Retrieve the JWT token from local storage or other storage mechanism
+
+    if (token) {
+      const jwtHelper = new JwtHelperService();
+      const decodedToken = jwtHelper.decodeToken(token);// Decode the token and check for expiration, integrity, etc.
+      const isAdmin = decodedToken.isAdmin || false; // Extract the 'isAdmin' flag from the token, defaulting to false
+
+      this.isLoggedInSubject.next(true); // User is logged in
+      this.isAdminSubject.next(isAdmin); // Set the 'isAdmin' value accordingly
+    } else {
+      this.isLoggedInSubject.next(false); // User is not logged in
+      this.isAdminSubject.next(false); // Set 'isAdmin' to false
+    }
+  }
+
+  decodeToken(token: string): any {
+    const jwtHelper = new JwtHelperService();
+  return jwtHelper.decodeToken(token); 
   }
 
 

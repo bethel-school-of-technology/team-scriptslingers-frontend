@@ -12,21 +12,29 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   hide = true;
+  firstName: string = '';
+  lastName: string = '';
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  signin(){
-    this.userService.setCurrentUserEmail(this.email);
-    this.userService.login(this.email, this.password).subscribe((response:any) => {
-        this.router.navigateByUrl('/home');
+  signin() {
+
+    this.userService.login(this.email, this.password).subscribe((response: any) => {
+      this.userService.setCurrentUserEmail(this.email);
+      // this.userService.setCurrentUser(this.firstName, this.lastName);
+
+      this.router.navigateByUrl('/home').then(() => {
+        location.reload();
+      });
+
     }, error => {
-        console.log('Error: ', error);
-        window.alert('Unsuccessful Login');
-        this.router.navigateByUrl('/signin');
+      console.log('Error: ', error);
+      window.alert('Unsuccessful Login');
+      this.router.navigateByUrl('/signin');
     });
-   }
+  }
 
 }
