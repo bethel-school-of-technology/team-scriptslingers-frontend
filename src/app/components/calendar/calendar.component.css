@@ -36,3 +36,9 @@ button {
 .mat-card-header-text {
     margin: 0px;
 }
+
+@media (max-width: 950px) {
+    #secondDiv{
+      display: none;
+  }
+}
