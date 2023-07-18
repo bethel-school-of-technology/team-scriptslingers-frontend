@@ -29,6 +29,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { AboutComponent } from './components/about/about.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { ResourcesComponent } from './components/resources/resources.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { AboutComponent } from './components/about/about.component';
     CommentCreateComponent,
     CommentDetailsComponent,
     CommentEditComponent,
-    AboutComponent
+    AboutComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { AboutComponent } from './components/about/about.component';
     MatStepperModule,
     MatDividerModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

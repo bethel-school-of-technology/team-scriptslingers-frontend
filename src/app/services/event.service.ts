@@ -22,7 +22,7 @@ export class EventService {
     return this.http.get<Event[]>(this.baseURL + "/future-events");
   }
 
-  getEventById(eventId: number): Observable<Event> {
+  getEventById(eventId?: number): Observable<Event> {
     return this.http.get<Event>(this.baseURL + "/" + eventId);
   }
 
@@ -41,7 +41,7 @@ export class EventService {
     let reqHeaders = {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.put(this.baseURL + "/" + eventId, editedEvent, { headers: reqHeaders });
+    return this.http.put<Event>(this.baseURL + "/" + eventId, editedEvent, { headers: reqHeaders });
   }
 
   deleteEvent(eventId: number) {
