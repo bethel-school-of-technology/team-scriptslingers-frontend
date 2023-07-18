@@ -4,6 +4,7 @@ import { Event } from 'src/app/models/event';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 import jwt_decode from 'jwt-decode';
+import { TemplateBindingParseResult } from '@angular/compiler';
 
 @Component({
   selector: 'app-event-details',
@@ -98,9 +99,20 @@ export class EventDetailsComponent implements OnInit {
   }
 
   cancel(eventId: number | undefined){
+    var tempList = this.currentEvent.attendeeList?.split(", ");
+    console.log("tempList", tempList);
     
-    console.log("User pressed the cancel button:", this.username);
-    this.router.navigate([`home`]);
-  }
+    if(tempList){
+      for (let i = 0; i < tempList.length; i++) {
+        const guest = tempList[i];
+        if(guest == this.username){
+          tempList.splice(i, 1);
+          this.currentEvent.attendeeList = tempList.join(", ");
 
+          this.eventService.editEvent(eventId, this.currentEvent);
+          this.router.navigate([`home`]);
+        }
+      }
+    }
+  }
 }
