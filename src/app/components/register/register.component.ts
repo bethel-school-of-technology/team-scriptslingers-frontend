@@ -20,8 +20,13 @@ export class RegisterComponent implements OnInit {
 
   signUp() {
     this.userService.signUp(this.newUser).subscribe(() => {
-        window.alert("User Registered Successfully");
-        this.router.navigate(['login']);
+      if(this.newUser.email && this.newUser.password){
+        this.userService.login(this.newUser.email, this.newUser.password).subscribe(() => {
+          this.router.navigate(['home']);
+        })
+      }
+      
+        
     }, error => {
         window.alert("User Registration Error");
         console.log('Error: ', error)
