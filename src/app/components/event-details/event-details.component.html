@@ -10,7 +10,6 @@
         <p>Event Time: {{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</p>
     </mat-card-content>
 
-    <button class="btn" [routerLink]='["/home"]'>Back</button>
     <div *ngIf="isLoggedIn">
       <button class="btn" [routerLink]='["/event-edit", currentEvent.eventId]'>Edit</button>
       <button class="btn" (click)="onDelete(currentEvent.eventId)"> Delete </button>
