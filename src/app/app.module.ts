@@ -25,12 +25,13 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CommentCreateComponent } from './components/comment-create/comment-create.component';
 import { CommentDetailsComponent } from './components/comment-details/comment-details.component';
 import { CommentEditComponent } from './components/comment-edit/comment-edit.component';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { AboutComponent } from './components/about/about.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ResourcesComponent } from './components/resources/resources.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ResourcesComponent } from './components/resources/resources.component';
     MatDividerModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
