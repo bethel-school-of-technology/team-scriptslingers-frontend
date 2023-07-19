@@ -25,8 +25,6 @@ export class UserService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
-  isAdmin: boolean = false;
-
   constructor(private http: HttpClient, private location: Location) { 
     this.checkAuthState();
 
@@ -54,6 +52,7 @@ export class UserService {
           const decodedToken = jwtHelper.decodeToken(token);
           console.log('decoded token', decodedToken);
           const isAdmin = decodedToken.isAdmin.toLowerCase() === 'true';
+          console.log('isAdmin:', isAdmin);
 
           this.isAdminSubject.next(isAdmin);
 
@@ -91,12 +90,6 @@ export class UserService {
 
   deleteUserById(id: number): Observable<any> {
     return this.http.delete<any>(this.authURL + "/" + id)
-  }
-
-  determineUserRole(): void {
-    const userRoles: string[] = ['isAdmin'];
-    // Check if the user has an admin role
-    this.isAdmin = userRoles.includes('isAdmin');
   }
 
   setCurrentUserEmail(email: string): void {

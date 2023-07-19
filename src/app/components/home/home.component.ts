@@ -5,7 +5,7 @@ import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
-import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+
 
 @Component({
   selector: 'app-home',
@@ -13,13 +13,6 @@ import { MatGridList, MatGridTile } from '@angular/material/grid-list';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  // @HostListener('window:scroll', ['$event'])
-  onWindowScroll(event: any) {
-    const scrollTop = window.pageYOffset;
-    const foreground = document.querySelector('.foreground-image') as HTMLElement;
-    foreground.style.top = `${scrollTop / 2}px`;
-  }
 
   eventList: Event[] = [];
   isLoggedIn: boolean | undefined;
@@ -34,24 +27,10 @@ export class HomeComponent implements OnInit {
       this.eventList = foundEvents;
     });
 
-    // this.userService.isLoggedIn$.subscribe(isLoggedIn => {
-    //   this.isLoggedIn = isLoggedIn;
-    //   this.cdRef.detectChanges();
-    //   console.log('isLoggedIn', isLoggedIn)
-    // });
-
-    // this.userService.isAdmin$.subscribe(isAdmin => {
-    //   this.isAdmin = isAdmin;
-    //   this.cdRef.detectChanges();
-    //   console.log('isAdmin', isAdmin)
-    // });
-
     this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small])
       .subscribe((state: BreakpointState) => {
         this.isSmallScreen = state.matches && !state.breakpoints[Breakpoints.Small];
       });
-
-
   }
 
   onDelete(eventId: number | undefined) {
@@ -77,6 +56,8 @@ export class HomeComponent implements OnInit {
   getGridColumns(): number {
     return this.isSmallScreen ? 1 : 2;
   }
+
+  
 
 }
 

@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(this.email, this.password).subscribe((response: any) => {
       this.userService.setCurrentUserEmail(this.email);
-      // this.userService.setCurrentUser(this.firstName, this.lastName);
 
       this.router.navigateByUrl('/home').then(() => {
         location.reload();
