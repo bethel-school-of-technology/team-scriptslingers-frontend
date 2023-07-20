@@ -4,9 +4,9 @@
     <div class="image2">
       <br>
       <br>
-      <h1 class="upcoming" color="primary">Upcoming Events</h1>
+      <h1 class="upcoming fade-in-animation" color="primary">Upcoming Events</h1>
       <mat-grid-list [cols]="getGridColumns()" rowHeight="300px">
-        <mat-grid-tile *ngFor="let event of eventList; let i = index">
+        <mat-grid-tile class="fade-in-events" *ngFor="let event of eventList; let i = index">
           <ng-container *ngIf="i < 2">
             <mat-card class="btn" [routerLink]='["/event-details", event.eventId]' class="events">
               <mat-card-header>
@@ -20,6 +20,7 @@
           </ng-container>
         </mat-grid-tile>
       </mat-grid-list>
+      <div class="about-fade-in">
       <div class="image-container" routerLink="/about">
         <div class="oval-image">
           <img src="/assets/Autumn_About.png" alt="About">
@@ -29,6 +30,7 @@
           outdoor activities Autumn Bear birthed MO Wild+Wonderful.
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>

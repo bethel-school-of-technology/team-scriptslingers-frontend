@@ -5,7 +5,7 @@ import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
   isAdmin: boolean | undefined;
   isSmallScreen: boolean | undefined;
 
+
+
   constructor(private eventService: EventService, public userService: UserService, private router: Router, private cdRef: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) { }
+
+
 
   ngOnInit(): void {
     this.eventService.getAllFutureEvent().subscribe((foundEvents: Event[]) => {
@@ -57,7 +61,7 @@ export class HomeComponent implements OnInit {
     return this.isSmallScreen ? 1 : 2;
   }
 
-  
+
 
 }
 

@@ -9,7 +9,6 @@
 .image2 {
   width: 100%;
   min-height: 100vh;
-  opacity: 0.75;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -121,4 +120,47 @@ body, html {
   align-items: center;
  }
 
+ .fade-in-animation {
+  opacity: 0;
+  visibility: hidden;
+  animation-name: fadeIn;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
 
+@keyframes fadeIn {
+  to {
+   opacity: 1;
+   visibility: visible;
+ }
+}
+
+.fade-in-events {
+  opacity: 0;
+  visibility: hidden;
+  animation-name: fadeEvent;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeEvent{
+  to{
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.about-fade-in {
+  opacity: 0;
+  visibility: hidden;
+  animation-name: aboutfade;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes aboutfade{
+  to{
+    opacity: 1;
+    visibility: visible;
+  }
+}
