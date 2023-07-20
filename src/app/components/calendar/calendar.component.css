@@ -23,6 +23,13 @@ button {
     flex-direction: row;
 }
 
+#titleDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
+
 .outerDiv {
     display: flex;
     flex-direction: row;
@@ -37,7 +44,7 @@ button {
     margin: 0px;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 960px) {
     #secondDiv{
       display: none;
   }

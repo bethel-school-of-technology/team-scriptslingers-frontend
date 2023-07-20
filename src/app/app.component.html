@@ -55,7 +55,7 @@
         <button mat-button routerLink="/login">Login</button>
       </span>
     </span>
-
+    
     <ng-container class="register-login" *ngIf="isLoggedIn$ | async; let isLoggedIn">
       <span class="welcome-message">Welcome, {{firstName}} {{lastName}}</span>
     </ng-container>
