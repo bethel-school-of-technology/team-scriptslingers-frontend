@@ -74,7 +74,7 @@ export class CalendarComponent implements OnInit {
   }
 
   showEventDetails(currentId?: number) {
-    if(window.innerWidth <= 950) {
+    if(window.innerWidth <= 960) {
       this.router.navigate(["/event-details", currentId]);
     }
     this.eventId = currentId;

@@ -5,11 +5,6 @@
   flex-direction: column;
 }
 
-/* .image-container {
-  position: relative;
-  height: 100%;
-} */
-
 .image1,
 .image2 {
   width: 100%;
@@ -84,14 +79,6 @@ body, html {
   overflow: hidden;
   cursor: pointer;
 }
-
-/* @media (max-width: 400px) {
-  .oval-image img{
-    width: auto;
-    height: 100%;
-    max-height: 100%;
-  }
-} */
 
 .oval-image img {
   width: 100%;

@@ -1,8 +1,10 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
 import { User } from './models/user';
 import jwt_decode from 'jwt-decode';
+import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,29 +13,23 @@ import jwt_decode from 'jwt-decode';
 })
 export class AppComponent {
   title = 'team-scriptslingers-frontend';
-  isLoggedIn: boolean | undefined;
-  isAdmin: boolean | undefined;
+  // isLoggedIn: boolean | undefined;
+  // isAdmin: boolean | undefined;
+  isAdmin$!: Observable<boolean>;
+  isLoggedIn$!: Observable<boolean>;
+
+
   username?: string;
   userList: User[] = [];
   currentUserEmail: string | null = null;
   firstName: string | undefined;
   lastName: string | undefined;
+  isSmallScreen: boolean | undefined;
+  isMobile = false;
 
-  constructor(public router: Router, public userService: UserService, private cdRef: ChangeDetectorRef) { }
+  constructor(public router: Router, public userService: UserService, private cdRef: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.userService.isAuthenticated();
-    this.isAdmin = this.userService.getIsAdmin();
-
-    this.userService.authStateChanged().subscribe((isLoggedIn: boolean) => {
-      this.isLoggedIn = isLoggedIn;
-      this.cdRef.detectChanges();
-    });
-
-    this.userService.adminStateChanged().subscribe((isAdmin:boolean)=>{
-      this.isAdmin = isAdmin;
-      this.cdRef.detectChanges()
-    })
   
     this.userService.currentUserEmail$.subscribe(email => {
       this.currentUserEmail = email;
@@ -47,18 +43,34 @@ export class AppComponent {
     }
 
     this.userService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
+      this.isLoggedIn$ = of(isLoggedIn);
     });
 
     this.userService.isAdmin$.subscribe(isAdmin => {
-      this.isAdmin = isAdmin;
+      this.isAdmin$ = of(isAdmin);
     });
 
+    this.isLoggedIn$ = this.userService.isLoggedIn$;
+    this.isAdmin$ = this.userService.isAdmin$;
+
+    this.checkScreenSize();
   }
 
   logout() {
     this.userService.logout()
-    location.reload();
+    this.router.navigateByUrl('/home')
   }
 
+  @HostListener('window:resize', [])
+    onResize(){
+      this.checkScreenSize();
+    }
+
+    checkScreenSize(){
+      this.isMobile = window.innerWidth < 815;
+    };
+
 }
+
+
+

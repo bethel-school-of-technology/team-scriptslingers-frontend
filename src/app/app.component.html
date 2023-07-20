@@ -1,16 +1,34 @@
-
 <mat-toolbar id="navBar" color="primary">
-    <img id ="logo" src="assets/wildwonderfullogooutline.png" alt="wildwonderful logo">
-    <span *ngIf="router.url === '/home'">
-        <span class="missouri-text">Missouri Wild and Wonderful</span>
-    </span>
+  <img id="logo" src="assets/wildwonderfullogooutline.png" alt="wildwonderful logo">
+  <span *ngIf="router.url === '/home'">
+    <span class="missouri-text">Missouri Wild and Wonderful</span>
+  </span>
 
-    <span *ngIf="!(router.url === '/home')">
-        <button mat-button routerLink="/home"> Home </button>
-    </span>
+  <span *ngIf="!(router.url === '/home')">
+    <button mat-button routerLink="/home"> Home </button>
+  </span>
 
-      <span class="spacer"></span>
+  <span class="spacer"></span>
 
+  <div class="nav-links">
+    <ng-container *ngIf="isMobile; else desktopLinks">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/resources">Resources</button>
+        <button mat-menu-item routerLink="/calendar">Events</button>
+        <button mat-menu-item routerLink="/about">About</button>
+        <ng-container *ngIf="isLoggedIn$ | async">
+          <ng-container *ngIf="isAdmin$ | async">
+            <button mat-menu-item routerLink="/event-create">Create Event</button>
+          </ng-container>
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </ng-container>
+      </mat-menu>
+    </ng-container>
+
+    <ng-template #desktopLinks>
       <span>
         <button mat-button routerLink="/resources">Resources</button>
       </span>
@@ -22,26 +40,26 @@
       <span>
         <button mat-button routerLink="/about">About</button>
       </span>
-      <div class="container">
+      <ng-container *ngIf="isLoggedIn$ | async">
+        <ng-container *ngIf="isAdmin$ | async">
+          <button mat-button routerLink="/event-create">Create Event</button>
+        </ng-container>
+        <button mat-button class="logout-button" (click)="logout()">Logout</button>
+      </ng-container>
+    </ng-template>
+  </div>
+  <div class="container">
     <span class="register-login" *ngIf="!(userService.isLoggedIn$ | async)">
       <span *ngIf="(router.url !== '/register') && (router.url !== '/login')">
         <button mat-button routerLink="/register">Register</button>
         <button mat-button routerLink="/login">Login</button>
       </span>
     </span>
-  
-    <span class="register-login" *ngIf="isLoggedIn" class="welcome-container">
-      <span class="welcome-message">Welcome, {{firstName}} {{lastName}}</span><br>
-      <!-- <span *ngIf="isAdmin">
-        <button mat-button routerLink="/event-create"> Create Event </button>
-      </span> -->
-      <button mat-button class="logout-button" (click)="logout()">Logout</button>
-    </span>
+    
+    <ng-container class="register-login" *ngIf="isLoggedIn$ | async; let isLoggedIn">
+      <span class="welcome-message">Welcome, {{firstName}} {{lastName}}</span>
+    </ng-container>
   </div>
-
-   
-  
 </mat-toolbar>
 
 <router-outlet></router-outlet>
-

@@ -31,7 +31,8 @@ import { MatIconModule} from '@angular/material/icon';
 import { AboutComponent } from './components/about/about.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ResourcesComponent } from './components/resources/resources.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule} from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import {MatListModule} from '@angular/material/list';
     BrowserAnimationsModule,
     MatIconModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

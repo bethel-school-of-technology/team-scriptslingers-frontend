@@ -19,10 +19,14 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp() {
+    this.newUser.isAdmin = undefined;
+
     this.userService.signUp(this.newUser).subscribe(() => {
       if(this.newUser.email && this.newUser.password){
         this.userService.login(this.newUser.email, this.newUser.password).subscribe(() => {
-          this.router.navigate(['home']);
+          this.router.navigateByUrl('/home').then(() => {
+            location.reload();
+          });
         })
       }
       
