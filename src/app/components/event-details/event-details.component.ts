@@ -18,6 +18,7 @@ export class EventDetailsComponent implements OnInit {
   isLoggedIn: boolean | undefined;
   username: string = "not logged in";
   inEvent: boolean | undefined;
+  eventUserList?: string[] = ["No one has signed up for this event"];
 
   constructor(private eventService: EventService, public userService: UserService, private actRoute: ActivatedRoute, private router: Router, private cdRef: ChangeDetectorRef) { }
 
@@ -34,6 +35,11 @@ export class EventDetailsComponent implements OnInit {
       // until line 46 is code for seeing if a user is signed up for the current event
       tempAttendeeList = foundEvent.attendeeList;
       console.log(tempAttendeeList);
+
+      if (tempAttendeeList != null && tempAttendeeList != "") {
+        this.eventUserList = tempAttendeeList?.split(", ");
+      }
+      console.log("does the list work?",this.eventUserList);
 
       const token = localStorage.getItem('MoWildToken');
       if (token) {
@@ -56,10 +62,6 @@ export class EventDetailsComponent implements OnInit {
       this.cdRef.detectChanges();
       console.log('isLoggedIn', isLoggedIn)
     });
-
-    
-    
-
   }
 
   onDelete(eventId: number | undefined) {
@@ -69,8 +71,7 @@ export class EventDetailsComponent implements OnInit {
       this.eventService.deleteEvent(eventId).subscribe(response => {
         console.log(response);
         window.alert("Item Successfully removed");
-        this.router.navigateByUrl("home");
-        location.reload();
+        this.router.navigate(['home']);
       }, error => {
         console.log('Error: ', error)
         if (error.status === 401 || error.status === 403) {

@@ -1,6 +1,9 @@
 <div class="outerDiv">
     <div>
-        <h1>Upcoming Events</h1>
+        <div id="titleDiv">
+            <h1>Upcoming Events</h1>
+            <button *ngIf="(userService.isAdmin$ | async)" mat-flat-button color="accent" routerLink="/event-create"> Create Event </button>
+        </div>
         <div>
             <mat-card *ngFor="let event of eventList">
                 <div id="content">
@@ -21,14 +24,43 @@
                 <mat-card-title>{{ currentEvent.eventTitle }}</mat-card-title>
                 <mat-card-subtitle><strong>{{ currentEvent.eventTime | date: 'MMM d, y, h:mm a' }}</strong></mat-card-subtitle>
                 <mat-card-content>
-                    <!-- <p>Location: {{ currentEvent.location }}</p> -->
+                    <p *ngIf="(inEvent) || (userService.isAdmin$ | async)">Location: {{ currentEvent.location }}</p>
                     <p>Host Name: {{ currentEvent.hostName }}</p>
                     <p>Description: {{ currentEvent.description }}</p>
                 </mat-card-content>
-                <!-- <div *ngIf="isLoggedIn">
-                    <button class="btn" (click)="onDelete(currentEvent.eventId)"> Delete </button>
-                </div> -->
+            
+                <div class="buttonDiv">
+                    <div *ngIf="(!inEvent) && (isLoggedIn)">
+                        <button mat-flat-button color="primary" (click)="signUp()"> Sign Up</button>
+                    </div>
+                    
+                    <div *ngIf="inEvent && (isLoggedIn)">
+                        <button mat-flat-button color="primary" (click)="cancel()"> Cancel</button>
+                    </div>
+              
+                    <div *ngIf="(userService.isAdmin$ | async)">
+                        <button mat-flat-button color="accent" [routerLink]='["/event-edit", currentEvent.eventId]'>Edit</button>
+                    </div>
+              
+                    <div *ngIf="(userService.isAdmin$ | async)"> 
+                        <button mat-flat-button color="warn" (click)="onDelete(currentEvent.eventId)"> Delete </button>
+                    </div>
+                    <mat-card-subtitle *ngIf="(!isLoggedIn)"><span class="logInRoute" routerLink="/login"><strong>Log in</strong></span> to sign up for event</mat-card-subtitle>
+                </div>
             </mat-card>
         </div>
+        <div *ngIf="(userService.isAdmin$ | async)" id="secondDiv">
+            <div>
+                <mat-card class="centerCard attendeeDiv">
+                    <mat-card-title>Attendee List</mat-card-title>
+                    <mat-card-content>
+                      <mat-list *ngFor="let user of eventUserList">
+                        <mat-divider></mat-divider>
+                        <mat-list-item>{{user}}</mat-list-item>
+                      </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>       
     </div>
 </div>

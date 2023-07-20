@@ -1,3 +1,32 @@
 #outerDiv {
     text-align: center;
 }
+
+.outerDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+button {
+    margin: 0px 20px ;
+}
+
+mat-card-content {
+    text-align: left;
+}
+
+mat-card {
+    max-width: 550px;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin: 20px;
+}
+
+@media (max-width: 950px) {
+    .outerDiv{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+  }
+}

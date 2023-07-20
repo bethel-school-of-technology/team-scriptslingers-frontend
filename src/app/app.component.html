@@ -32,9 +32,9 @@
   
     <span class="register-login" *ngIf="isLoggedIn" class="welcome-container">
       <span class="welcome-message">Welcome, {{firstName}} {{lastName}}</span><br>
-      <span *ngIf="isAdmin">
+      <!-- <span *ngIf="isAdmin">
         <button mat-button routerLink="/event-create"> Create Event </button>
-      </span>
+      </span> -->
       <button mat-button class="logout-button" (click)="logout()">Logout</button>
     </span>
   </div>

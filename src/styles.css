@@ -18,3 +18,17 @@ h1 {
      margin: auto;
      padding: 20px;
  }
+
+.attendeeDiv {
+     min-width: 160px;
+}
+
+.buttonDiv {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+ }
+
+.logInRoute {
+     color: #FFB74D;
+ }
