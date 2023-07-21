@@ -41,9 +41,6 @@
         <button mat-button routerLink="/about">About</button>
       </span>
       <ng-container *ngIf="isLoggedIn$ | async">
-        <ng-container *ngIf="isAdmin$ | async">
-          <button mat-button routerLink="/event-create">Create Event</button>
-        </ng-container>
         <button mat-button class="logout-button" (click)="logout()">Logout</button>
       </ng-container>
     </ng-template>

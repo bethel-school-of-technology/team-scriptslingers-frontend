@@ -4,7 +4,7 @@
         <mat-card-title>Missouri Wild and Wonderful</mat-card-title>
 
         <mat-card-content>
-          <form #form="ngForm"(ngSubmit)="signin()">
+          <form #form="ngForm" (ngSubmit)="signin()">
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
               <input matInput type="text" name="email" [formControl]="emailValid" required [(ngModel)]="email">
@@ -17,7 +17,7 @@
               <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
-              <mat-error >You must enter a value</mat-error>
+              <mat-error>You must enter a value</mat-error>
             </mat-form-field>
             <br>
             <button type="submit" mat-flat-button color="primary">Log In</button>
