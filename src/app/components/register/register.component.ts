@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
+  emailValid = new FormControl('', [Validators.required, Validators.email]);
   newUser: User = new User();
   hide = true;
 
@@ -32,9 +34,17 @@ export class RegisterComponent implements OnInit {
       
         
     }, error => {
-        window.alert("User Registration Error");
+        window.alert("Please enter vaild info to Registration");
         console.log('Error: ', error)
     });
+  }
+
+  getErrorMessage() {
+    if (this.emailValid.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.emailValid.hasError('email') ? 'Not a valid email' : '';
   }
 
 }
