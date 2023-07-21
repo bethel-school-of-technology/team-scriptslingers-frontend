@@ -1,42 +1,44 @@
 <div id="registerDiv">
-  <mat-card class="centerCard">
-      <mat-card-title>Missouri Wild and Wonderful</mat-card-title>
+  <div>
+    <mat-card class="centerCard">
+        <mat-card-title>Missouri Wild and Wonderful</mat-card-title>
 
-      <mat-card-content>
-        <form #form="ngForm"(ngSubmit)="signUp()">
-          <mat-form-field appearance="outline">
-            <mat-label>First Name</mat-label>
-            <input matInput type="text" name="firstName" [(ngModel)]="newUser.firstName">
-          </mat-form-field>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-label>Last Name</mat-label>
-            <input matInput type="text" name="lastName" [(ngModel)]="newUser.lastName">
-          </mat-form-field>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput type="text" name="email" [(ngModel)]="newUser.email">
-          </mat-form-field>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="newUser.password">
-            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-          <br>
+        <mat-card-content>
+          <form #form="ngForm"(ngSubmit)="signUp()">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" name="firstName" [(ngModel)]="newUser.firstName">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" name="lastName" [(ngModel)]="newUser.lastName">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="text" name="email" [(ngModel)]="newUser.email">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="newUser.password">
+              <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <br>
 
-          <button type="submit" mat-flat-button color="primary">Sign Up</button>
-        </form> 
-          
-        <mat-divider></mat-divider>
-      </mat-card-content>
-    
-      <mat-card-actions>
-          <button mat-flat-button color="accent" routerLink="/login">Already have an account?</button>
-      </mat-card-actions>
+            <button type="submit" mat-flat-button color="primary">Sign Up</button>
+          </form> 
+            
+          <mat-divider></mat-divider>
+        </mat-card-content>
+      
+        <mat-card-actions>
+            <button mat-flat-button color="accent" routerLink="/login">Already have an account?</button>
+        </mat-card-actions>
 
-  </mat-card>
+    </mat-card>
+  </div>
 </div>

@@ -1,6 +1,5 @@
 h1{
-    margin-top: 20px;
-    margin-left: 75px;
+    margin: 20px 0px;
 }
 
 h2{
@@ -9,4 +8,60 @@ h2{
 
 p{
     margin-left: 20px;
+}
+
+mat-card {
+    margin: 10px;
+    width: 420px;
+}
+
+mat-icon {
+    margin-top: 35px;
+}
+
+#sideDiv {
+    color: #004D40;
+    border: 2px solid gainsboro;
+    border-radius: 10px;
+    position:fixed;
+    right: 10%;
+    top: 100px;
+}
+    
+#mainDiv {
+    height: 100%;
+    background-color: rgb(243, 243, 230);
+    padding: 0px 10%;
+    scroll-margin-top: 75px;    
+}
+
+#content {
+    max-width: 450px;
+}
+
+#heading {
+    display: flex;
+    justify-content: center;
+    /* align-items: baseline; */
+}
+  
+.sideTitle {
+    padding: 5px 20px;
+}
+
+@media (max-width: 960px) {
+    #sideDiv{
+      display: none;
+    }
+
+    #mainDiv {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 961px) {
+    mat-icon {
+      display: none;
+    }
 }

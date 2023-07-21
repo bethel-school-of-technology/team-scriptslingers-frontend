@@ -33,6 +33,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { MatListModule} from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatGridListModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
