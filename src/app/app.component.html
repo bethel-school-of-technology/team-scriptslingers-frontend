@@ -20,9 +20,6 @@
         <button mat-menu-item routerLink="/calendar">Events</button>
         <button mat-menu-item routerLink="/about">About</button>
         <ng-container *ngIf="isLoggedIn$ | async">
-          <ng-container *ngIf="isAdmin$ | async">
-            <button mat-menu-item routerLink="/event-create">Create Event</button>
-          </ng-container>
           <button mat-menu-item (click)="logout()">Logout</button>
         </ng-container>
       </mat-menu>
@@ -41,9 +38,6 @@
         <button mat-button routerLink="/about">About</button>
       </span>
       <ng-container *ngIf="isLoggedIn$ | async">
-        <ng-container *ngIf="isAdmin$ | async">
-          <button mat-button routerLink="/event-create">Create Event</button>
-        </ng-container>
         <button mat-button class="logout-button" (click)="logout()">Logout</button>
       </ng-container>
     </ng-template>
@@ -55,9 +49,9 @@
         <button mat-button routerLink="/login">Login</button>
       </span>
     </span>
-    
+
     <ng-container class="register-login" *ngIf="isLoggedIn$ | async; let isLoggedIn">
-      <span class="welcome-message">Welcome, {{firstName}} {{lastName}}</span>
+      <span class="welcome-message">Welcome, {{firstName}}</span>
     </ng-container>
   </div>
 </mat-toolbar>
