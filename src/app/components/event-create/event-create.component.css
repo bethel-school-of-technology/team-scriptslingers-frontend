@@ -1,0 +1,26 @@
+mat-card-title {
+    margin: 20px 0px;
+}
+
+mat-form-field {
+    width: 250px;
+}
+
+button {
+    width: 250px;
+    height: 55px;
+    margin: 10px;
+}
+
+.outerDiv {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.centerCard {
+    width: 340px;
+    text-align: center;
+    margin: 50px;
+    padding: 20px;
+}

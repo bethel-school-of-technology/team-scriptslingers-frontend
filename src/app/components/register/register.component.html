@@ -33,7 +33,7 @@
             </mat-form-field>
             <br>
 
-            <button type="submit" mat-flat-button color="primary">Sign Up</button>
+            <button type="submit" mat-flat-button [disabled]="!form.valid" color="primary">Sign Up</button>
           </form> 
             
           <mat-divider></mat-divider>

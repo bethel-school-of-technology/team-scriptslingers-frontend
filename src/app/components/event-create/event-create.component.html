@@ -1,23 +1,34 @@
-<div>
-    <form (ngSubmit)="addEvent()">
-        <h1>Create New Event</h1>
+<div class="outerDiv">
+    <mat-card class="centerCard">
+        <mat-card-title>Create New Event</mat-card-title>
 
-        <span>New Event Title </span>
-        <input placeholder="Enter Your Title" type="text" name="eventTitle" [(ngModel)]="newEvent.eventTitle"><br><br>
+        <mat-card-content>
+            <form #form="ngForm" (ngSubmit)="addEvent()">
+                <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+                    <mat-label>Event Title</mat-label>
+                    <input matInput type="text" name="title" required [(ngModel)]="newEvent.eventTitle">
+                    <mat-error>You must enter a value</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+                    <mat-label>Event Location</mat-label>
+                    <input matInput type="text" name="location" required [(ngModel)]="newEvent.location">
+                    <mat-error>You must enter a value</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+                    <mat-label>Event Desciption</mat-label>
+                    <textarea matInput type="text" name="desciption" required [(ngModel)]="newEvent.description"></textarea>
+                    <mat-error>You must enter a value</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field [hideRequiredMarker]="true" appearance="outline">
+                    <input matInput type="datetime-local" placeholder="Choose a date and time" name="eventTime" [(ngModel)]="newEvent.eventTime">
+                </mat-form-field>
+                <br>
+                <button type="submit" mat-flat-button [disabled]="!form.valid" color="primary">Create</button>
+            </form>
+        </mat-card-content>
 
-        <span>Event Desciption </span>
-        <input placeholder="Enter Desciption" type="text" name="description" [(ngModel)]="newEvent.description"><br><br>
-
-        <span>Event Location </span>
-        <input placeholder="Where will this event take place" type="text" name="location"
-            [(ngModel)]="newEvent.location"><br><br>
-
-        <mat-form-field>
-            <input matInput type="datetime-local" placeholder="Choose a date and time" name="eventTime" [(ngModel)]="newEvent.eventTime">
-        </mat-form-field>
-
-        <button>
-            Create
-        </button>
-    </form>
+    </mat-card>
 </div>
