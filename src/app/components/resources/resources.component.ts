@@ -12,4 +12,10 @@ export class ResourcesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  scroll(el: HTMLElement) {
+    setTimeout(()=> {
+      el.scrollIntoView();
+    }, 0);
+  }
+
 }

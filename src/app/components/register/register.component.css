@@ -2,8 +2,8 @@
     background-image: url("/assets/wildwonderfullogooutline.png");
     background-position: center center;
     margin: auto;
-    /* width: 950px;
-    height: 850px; */
+    width: 950px;
+    height: 850px;
     display: flex;
     justify-content: center;
 }
@@ -31,4 +31,12 @@ button {
     width: 250px;
     height: 55px;
     margin: 10px;
+}
+
+@media (max-width: 950px) {
+    #registerDiv {
+        background-image: none;
+        width: auto;
+        height: auto;
+  }
 }
