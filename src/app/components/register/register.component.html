@@ -7,25 +7,29 @@
           <form #form="ngForm"(ngSubmit)="signUp()">
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
-              <input matInput type="text" name="firstName" [(ngModel)]="newUser.firstName">
+              <input matInput type="text" name="firstName" required [(ngModel)]="newUser.firstName">
+              <mat-error >You must enter a value</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
               <mat-label>Last Name</mat-label>
-              <input matInput type="text" name="lastName" [(ngModel)]="newUser.lastName">
+              <input matInput type="text" name="lastName" required [(ngModel)]="newUser.lastName">
+              <mat-error >You must enter a value</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput type="text" name="email" [(ngModel)]="newUser.email">
+              <input matInput type="text" name="email" [formControl]="emailValid" required [(ngModel)]="newUser.email">
+              <mat-error *ngIf="emailValid.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="newUser.password">
+              <input matInput minlength="5" [type]="hide ? 'password' : 'text'" name="password" required [(ngModel)]="newUser.password">
               <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+              <mat-error >Must be at least 5 characters</mat-error>
             </mat-form-field>
             <br>
 
