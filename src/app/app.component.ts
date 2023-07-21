@@ -67,7 +67,7 @@ export class AppComponent {
     }
 
     checkScreenSize(){
-      this.isMobile = window.innerWidth < 815;
+      this.isMobile = window.innerWidth < 700;
     };
 
 }
