@@ -14,12 +14,8 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  getAllEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.baseURL);
-  }
-
   getAllFutureEvent(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.baseURL + "/future-events");
+    return this.http.get<Event[]>(this.baseURL);
   }
 
   getEventById(eventId?: number): Observable<Event> {
