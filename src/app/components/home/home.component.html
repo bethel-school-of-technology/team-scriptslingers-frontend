@@ -8,15 +8,16 @@
       <mat-grid-list [cols]="getGridColumns()" rowHeight="300px">
         <mat-grid-tile class="fade-in-events" *ngFor="let event of eventList; let i = index">
           <ng-container *ngIf="i < 2">
+            
             <mat-card class="btn" [routerLink]='["/event-details", event.eventId]' class="events">
-              <mat-card-header>
-                <mat-card-title>{{ event.eventTitle }}</mat-card-title>
-              </mat-card-header>
+              <mat-card-title>{{ event.eventTitle }}</mat-card-title>
+              <mat-card-subtitle><strong>{{ event.eventTime | date: 'MMM d, y, h:mm a' }}</strong></mat-card-subtitle>
+                  
               <mat-card-content>
                 <p>Description: {{ event.description }}</p>
-                <p>Host Name: {{ event.hostName }}</p>
               </mat-card-content>
             </mat-card>
+
           </ng-container>
         </mat-grid-tile>
       </mat-grid-list>
