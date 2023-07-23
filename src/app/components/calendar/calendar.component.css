@@ -3,7 +3,7 @@ h1 {
 }
 mat-card {
     max-width: 450px;
-    margin-bottom: 15px;
+    margin: 0px 15px 15px 15px;
 }
 
 mat-card-subtitle {
@@ -12,10 +12,6 @@ mat-card-subtitle {
 
 mat-card-content {
     text-align: left;
-}
-
-button {
-    margin-left: 2em;
 }
 
 #content {
@@ -28,6 +24,15 @@ button {
     flex-direction: row;
     align-items: baseline;
     justify-content: center;
+}
+
+#createbutton {
+    margin-left: 20px;
+}
+
+.detailButton {
+    width:100%;
+    height: 100%;
 }
 
 .outerDiv {

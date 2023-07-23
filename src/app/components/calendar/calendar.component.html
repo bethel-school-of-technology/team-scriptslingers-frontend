@@ -2,7 +2,7 @@
     <div>
         <div id="titleDiv">
             <h1>Upcoming Events</h1>
-            <button *ngIf="(userService.isAdmin$ | async)" mat-flat-button color="accent" routerLink="/event-create"> Create Event </button>
+            <button id="createbutton" *ngIf="(userService.isAdmin$ | async)" mat-flat-button color="accent" routerLink="/event-create"> Create Event </button>
         </div>
         <div>
             <mat-card *ngFor="let event of eventList">
@@ -12,7 +12,9 @@
                         <mat-card-subtitle>Event Time: {{ event.eventTime | date: 'MMM d, y, h:mm a' }}</mat-card-subtitle>
                     </div>
                     <span class="spacer"></span>
-                    <button mat-flat-button color="primary" (click)="showEventDetails(event.eventId)"> Details </button>  
+                    <div>
+                        <button class="detailButton" mat-flat-button color="primary" (click)="showEventDetails(event.eventId)"> Details </button>  
+                    </div>
                 </div>
             </mat-card>
         </div>
