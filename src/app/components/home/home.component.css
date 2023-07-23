@@ -24,6 +24,11 @@
   
 }
 
+mat-card {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
 @media (max-width: 768px) {
 
   .image1,
