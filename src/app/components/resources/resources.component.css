@@ -3,7 +3,7 @@ h1{
 }
 
 h2{
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 p{
@@ -31,7 +31,7 @@ mat-icon {
 #mainDiv {
     height: 100%;
     background-color: rgb(243, 243, 230);
-    padding: 0px 25% 0px 0px;
+    padding-right: calc(10% + 250px);
     scroll-margin-top: 75px;    
 }
 
@@ -55,30 +55,37 @@ mat-icon {
     padding: 5px 20px;
 }
 
-/* @media (max-width: 960px) {
+@media (max-width: 1350px) {
     #sideDiv{
-      display: none;
+        right: 5%;
     }
 
     #mainDiv {
-        display: flex;
-        justify-content: center;
-    }
-} */
-
-@media (max-width: 960px) {
-    #sideDiv{
-      display: none;
-    }
-
-    #mainDiv {
-        display: flex;
-        justify-content: center;
+        padding-right: calc(5% + 250px);
     }
 }
 
-@media (min-width: 961px) {
+@media (max-width: 1125px) {
+    #sideDiv{
+      display: none;
+    }
+
+    #mainDiv {
+        display: flex;
+        justify-content: center;
+        padding-right: 10px;
+    }
+}
+
+@media (min-width: 1126px) {
     mat-icon {
       display: none;
+    }
+}
+
+@media (max-width: 830px) {
+    .resource {
+        max-width: 450px;
+        flex-basis: 100%;
     }
 }
