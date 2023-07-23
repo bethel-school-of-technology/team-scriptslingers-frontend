@@ -28,7 +28,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.getAllFutureEvent().subscribe((foundEvents: Event[]) => {
       console.log(foundEvents);
-      this.eventList = foundEvents;
+      for(let i = 1; i <= 2; i++){
+        this.eventList.push(foundEvents[i]);
+      }
     });
 
     this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small])
