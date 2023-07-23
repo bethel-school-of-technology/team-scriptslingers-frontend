@@ -42,9 +42,11 @@ export class CalendarComponent implements OnInit {
     this.eventService.getEventById(this.eventId).subscribe(foundEvent => {
         this.currentEvent = foundEvent;
         tempAttendeeList = foundEvent.attendeeList;
+        this.eventUserList = tempAttendeeList?.split(", ");
+        console.log("this is temp list", tempAttendeeList);
 
-        if (tempAttendeeList != null && tempAttendeeList != "") {
-          this.eventUserList = tempAttendeeList?.split(", ");
+        if (tempAttendeeList === null || tempAttendeeList === "") {
+          this.eventUserList = ["No one has signed up for this event"];
         }
         console.log("does the list work?",this.eventUserList);
 
@@ -91,7 +93,8 @@ export class CalendarComponent implements OnInit {
       this.eventService.deleteEvent(eventId).subscribe(response => {
         console.log(response);
         window.alert("Item Successfully removed");
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
+        this.ngOnInit();
       }, error => {
         console.log('Error: ', error)
         if (error.status === 401 || error.status === 403) {
@@ -108,13 +111,15 @@ export class CalendarComponent implements OnInit {
       this.currentEvent.attendeeList = this.username;
       this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
         console.log(edittedEvent);
-        this.router.navigate(["home"]);
+        // this.router.navigate(["home"]);
+        this.showCurrentEvent();
       })
     } else {
       this.currentEvent.attendeeList = `${this.currentEvent.attendeeList}, ${this.username}`;
       this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
         console.log(edittedEvent);
-        this.router.navigate(["home"]);
+        // this.router.navigate(["home"]);
+        this.showCurrentEvent();
       });
     }
   }
@@ -132,7 +137,8 @@ export class CalendarComponent implements OnInit {
 
           this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
             console.log(edittedEvent);
-            this.router.navigate(["home"]);
+            // this.router.navigate(["home"]);
+            this.showCurrentEvent();
           });
         }
       }
