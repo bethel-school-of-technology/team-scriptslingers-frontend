@@ -31,23 +31,40 @@ mat-icon {
 #mainDiv {
     height: 100%;
     background-color: rgb(243, 243, 230);
-    padding: 0px 10%;
+    padding: 0px 25% 0px 0px;
     scroll-margin-top: 75px;    
 }
 
-#content {
-    max-width: 450px;
+#resources {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 #heading {
     display: flex;
     justify-content: center;
-    /* align-items: baseline; */
+}
+
+.resource {
+    max-width: 450px;
+    flex-basis: 50%;
 }
   
 .sideTitle {
     padding: 5px 20px;
 }
+
+/* @media (max-width: 960px) {
+    #sideDiv{
+      display: none;
+    }
+
+    #mainDiv {
+        display: flex;
+        justify-content: center;
+    }
+} */
 
 @media (max-width: 960px) {
     #sideDiv{
