@@ -1,6 +1,7 @@
 h1 {
     text-align: center;
 }
+
 mat-card {
     max-width: 450px;
     margin: 0px 15px 15px 15px;
@@ -52,5 +53,31 @@ mat-card-content {
 @media (max-width: 960px) {
     #secondDiv{
       display: none;
-  }
+    }
+
+    mat-card {
+        max-width: 450px;
+        margin: 15px 0px;
+    }
+}
+
+@media (max-width: 570px) {
+    mat-card-title {
+        font-size: 4vw;
+    }
+
+    .outerDiv {
+        margin: 10px;
+    }
+
+    #titleDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1,
+    #createbutton {
+        margin: 1px;
+    }   
 }

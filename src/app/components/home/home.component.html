@@ -4,7 +4,7 @@
     <div class="image2">
       <br>
       <br>
-      <h1 class="upcoming fade-in-animation" color="primary">Upcoming Events</h1>
+      <h1 class="upcoming fade-in-animation" color="primary" routerLink="/calendar">Upcoming Events</h1>
       <mat-grid-list [cols]="getGridColumns()" rowHeight="300px">
         <mat-grid-tile class="fade-in-events" *ngFor="let event of eventList; let i = index">
           <ng-container *ngIf="i < 2">

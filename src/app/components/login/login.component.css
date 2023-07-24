@@ -10,7 +10,9 @@
 
 .centerCard {
     width: 340px;
+    text-align: center;
     margin: 50px;
+    padding: 20px;
 }
 
 mat-card-title {
@@ -37,4 +39,17 @@ button {
         width: auto;
         height: auto;
   }
+}
+
+@media (max-width: 480px) {
+    mat-card-title {
+        font-size: 5vw;
+    }
+
+    .centerCard {
+        /* width: 340px; */
+        text-align: center;
+        margin: 20px;
+        padding: 20px 10px;
+    }
 }
