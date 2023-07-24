@@ -28,7 +28,7 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
     
     this.eventService.getAllFutureEvent().subscribe(events => {
-      console.log(events);
+      // console.log(events);
       this.eventList = events;
       this.eventId = this.eventList[0].eventId;
       this.showCurrentEvent()
@@ -42,11 +42,11 @@ export class CalendarComponent implements OnInit {
     this.eventService.getEventById(this.eventId).subscribe(foundEvent => {
         this.currentEvent = foundEvent;
         tempAttendeeList = foundEvent.attendeeList;
+        this.eventUserList = tempAttendeeList?.split(", ");
 
-        if (tempAttendeeList != null && tempAttendeeList != "") {
-          this.eventUserList = tempAttendeeList?.split(", ");
+        if (tempAttendeeList === null || tempAttendeeList === "") {
+          this.eventUserList = ["No one has signed up for this event"];
         }
-        console.log("does the list work?",this.eventUserList);
 
         const token = localStorage.getItem('MoWildToken');
         if (token) {
@@ -56,10 +56,10 @@ export class CalendarComponent implements OnInit {
 
           if(tempAttendeeList?.includes(this.username)){
             this.inEvent = true;
-            console.log(this.inEvent);
+            // console.log(this.inEvent);
           } else {
             this.inEvent = false;
-            console.log(this.inEvent);
+            // console.log(this.inEvent);
           }
         } 
       });
@@ -69,7 +69,7 @@ export class CalendarComponent implements OnInit {
     this.userService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       this.cdRef.detectChanges();
-      console.log('isLoggedIn', isLoggedIn)
+      // console.log('isLoggedIn', isLoggedIn)
     });
   }
 
@@ -85,13 +85,14 @@ export class CalendarComponent implements OnInit {
   }
 
   onDelete(eventId: number | undefined) {
-    console.log('eventList:', this.eventList)
-    console.log('onDelete id', eventId);
+    // console.log('eventList:', this.eventList)
+    // console.log('onDelete id', eventId);
     if (eventId != undefined) {
       this.eventService.deleteEvent(eventId).subscribe(response => {
         console.log(response);
         window.alert("Item Successfully removed");
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
+        this.ngOnInit();
       }, error => {
         console.log('Error: ', error)
         if (error.status === 401 || error.status === 403) {
@@ -107,21 +108,22 @@ export class CalendarComponent implements OnInit {
     if (this.currentEvent.attendeeList == null || this.currentEvent.attendeeList == "" || this.currentEvent.attendeeList == "string"){
       this.currentEvent.attendeeList = this.username;
       this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
-        console.log(edittedEvent);
-        this.router.navigate(["home"]);
+        // console.log(edittedEvent);
+        // this.router.navigate(["home"]);
+        this.showCurrentEvent();
       })
     } else {
       this.currentEvent.attendeeList = `${this.currentEvent.attendeeList}, ${this.username}`;
       this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
-        console.log(edittedEvent);
-        this.router.navigate(["home"]);
+        // console.log(edittedEvent);
+        // this.router.navigate(["home"]);
+        this.showCurrentEvent();
       });
     }
   }
 
   cancel(){
     var tempList = this.currentEvent.attendeeList?.split(", ");
-    console.log("tempList", tempList);
     
     if(tempList){
       for (let i = 0; i < tempList.length; i++) {
@@ -131,8 +133,9 @@ export class CalendarComponent implements OnInit {
           this.currentEvent.attendeeList = tempList.join(", ");
 
           this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
-            console.log(edittedEvent);
-            this.router.navigate(["home"]);
+            // console.log(edittedEvent);
+            // this.router.navigate(["home"]);
+            this.showCurrentEvent();
           });
         }
       }

@@ -26,9 +26,14 @@ h1 {
 .buttonDiv {
      display: flex;
      flex-direction: row;
-     justify-content: center;
- }
+     justify-content: space-evenly;
+}
 
 .logInRoute {
      color: #FFB74D;
- }
+}
+
+.smolBtn {
+     margin-bottom: 10px;
+     align-self: flex-start;
+}

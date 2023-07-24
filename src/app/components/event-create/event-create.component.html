@@ -1,4 +1,5 @@
 <div class="outerDiv">
+    <button class="smolBtn" mat-flat-button color="accent" routerLink="/calendar"> < Events</button>
     <mat-card class="centerCard">
         <mat-card-title>Create New Event</mat-card-title>
 
@@ -26,7 +27,7 @@
                     <input matInput type="datetime-local" placeholder="Choose a date and time" name="eventTime" [(ngModel)]="newEvent.eventTime">
                 </mat-form-field>
                 <br>
-                <button type="submit" mat-flat-button [disabled]="!form.valid" color="primary">Create</button>
+                <button id="createBtn" type="submit" mat-flat-button [disabled]="!form.valid" color="primary">Create</button>
             </form>
         </mat-card-content>
 

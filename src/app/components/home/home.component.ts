@@ -27,8 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventService.getAllFutureEvent().subscribe((foundEvents: Event[]) => {
-      console.log(foundEvents);
-      for(let i = 1; i <= 2; i++){
+      for(let i = 0; i <= 1; i++){
         this.eventList.push(foundEvents[i]);
       }
     });

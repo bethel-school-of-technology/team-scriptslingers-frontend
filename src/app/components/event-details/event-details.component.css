@@ -1,5 +1,5 @@
-#outerDiv {
-    text-align: center;
+.smolBtn {
+    margin-bottom: 10px;
 }
 
 .outerDiv {
@@ -8,8 +8,8 @@
     justify-content: space-around;
 }
 
-button {
-    margin: 0px 20px ;
+#secondDiv {
+    margin-top: 10px;
 }
 
 mat-card-content {
@@ -18,8 +18,8 @@ mat-card-content {
 
 mat-card {
     max-width: 550px;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 3vw;
+    padding-right: 3vw;
     margin: 20px;
 }
 
@@ -29,4 +29,24 @@ mat-card {
         justify-content: center;
         align-items: center;
   }
+}
+
+@media (min-width: 700px) {
+    .smolBtn {
+      display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    mat-card {
+        margin: 0px;
+    }
+
+    mat-card-title {
+        font-size: 5vw;
+    }
+
+    .outerDiv {
+        margin: 10px;
+    }
 }

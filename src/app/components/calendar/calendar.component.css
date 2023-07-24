@@ -1,9 +1,10 @@
 h1 {
     text-align: center;
 }
+
 mat-card {
     max-width: 450px;
-    margin-bottom: 15px;
+    margin: 0px 15px 15px 15px;
 }
 
 mat-card-subtitle {
@@ -12,10 +13,6 @@ mat-card-subtitle {
 
 mat-card-content {
     text-align: left;
-}
-
-button {
-    margin-left: 2em;
 }
 
 #content {
@@ -28,6 +25,15 @@ button {
     flex-direction: row;
     align-items: baseline;
     justify-content: center;
+}
+
+#createbutton {
+    margin-left: 20px;
+}
+
+.detailButton {
+    width:100%;
+    height: 100%;
 }
 
 .outerDiv {
@@ -47,5 +53,31 @@ button {
 @media (max-width: 960px) {
     #secondDiv{
       display: none;
-  }
+    }
+
+    mat-card {
+        max-width: 450px;
+        margin: 15px 0px;
+    }
+}
+
+@media (max-width: 570px) {
+    mat-card-title {
+        font-size: 4vw;
+    }
+
+    .outerDiv {
+        margin: 10px;
+    }
+
+    #titleDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1,
+    #createbutton {
+        margin: 1px;
+    }   
 }

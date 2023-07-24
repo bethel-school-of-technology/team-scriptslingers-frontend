@@ -1,3 +1,7 @@
+.smolBtn {
+    margin-bottom: 10px;
+}
+
 mat-card-title {
     margin: 20px 0px;
 }
@@ -6,7 +10,7 @@ mat-form-field {
     width: 250px;
 }
 
-button {
+#updateBtn {
     width: 250px;
     height: 55px;
     margin: 10px;
@@ -15,7 +19,8 @@ button {
 .outerDiv {
     display: flex;
     justify-content: center;
-    margin: auto;
+    align-items: center;
+    flex-direction: column;
 }
 
 .centerCard {
@@ -23,4 +28,22 @@ button {
     text-align: center;
     margin: 50px;
     padding: 20px;
+}
+
+@media (min-width: 700px) {
+    .smolBtn {
+      display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .centerCard {
+        text-align: center;
+        margin: 0px;
+        padding: 1.5vw;
+    }
+
+    .outerDiv {
+        margin: 10px;
+    }
 }
