@@ -32,13 +32,13 @@ mat-icon {
     height: 100%;
     background-color: rgb(243, 243, 230);
     padding-right: calc(10% + 250px);
-    scroll-margin-top: 75px;    
 }
 
 #resources {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    scroll-margin-top: 75px;    
 }
 
 #heading {
@@ -53,6 +53,7 @@ mat-icon {
   
 .sideTitle {
     padding: 5px 20px;
+    cursor: pointer;
 }
 
 @media (max-width: 1350px) {

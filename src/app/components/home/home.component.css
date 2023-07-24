@@ -29,6 +29,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  padding: 30px 0px;
 }
 
 mat-card {
@@ -76,7 +77,7 @@ img {
   border: 1px black solid;
   border-radius: 5px;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 50px 0px;
 }
 
 @media (max-width: 1000px) {
