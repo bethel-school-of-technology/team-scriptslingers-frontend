@@ -24,9 +24,17 @@
   
 }
 
+#eventDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 30px 0px;
+}
+
 mat-card {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 
 @media (max-width: 768px) {
@@ -52,8 +60,10 @@ mat-card {
   border: 1px black solid;
   margin-left: 25%;
   margin-right: 25%;
+  margin-bottom: 20px;
   background-color: antiquewhite;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 img {
@@ -62,11 +72,18 @@ img {
 }
 
 .events {
-  width: 75%;
-   cursor: pointer;
+  width: 40%;
+  cursor: pointer;
   border: 1px black solid;
   border-radius: 5px;
   text-align: center;
+  margin: 50px 0px;
+}
+
+@media (max-width: 1000px) {
+  .events {
+    width: 85%;
+  }
 }
 
 body, html {

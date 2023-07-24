@@ -71,7 +71,7 @@ export class EventDetailsComponent implements OnInit {
       this.eventService.deleteEvent(eventId).subscribe(response => {
         console.log(response);
         window.alert("Item Successfully removed");
-        this.router.navigate(['home']);
+        this.router.navigate(['calendar']);
       }, error => {
         console.log('Error: ', error)
         if (error.status === 401 || error.status === 403) {
@@ -87,14 +87,14 @@ export class EventDetailsComponent implements OnInit {
     if (this.currentEvent.attendeeList == null || this.currentEvent.attendeeList == "" || this.currentEvent.attendeeList == "string"){
       this.currentEvent.attendeeList = this.username;
       this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
-        console.log(edittedEvent);
-        this.router.navigate(["home"]);
+        // console.log(edittedEvent);
+        this.router.navigate(["calendar"]);
       })
     } else {
       this.currentEvent.attendeeList = `${this.currentEvent.attendeeList}, ${this.username}`;
       this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
-        console.log(edittedEvent);
-        this.router.navigate(["home"]);
+        // console.log(edittedEvent);
+        this.router.navigate(["calendar"]);
       });
     }
   }
@@ -111,8 +111,8 @@ export class EventDetailsComponent implements OnInit {
           this.currentEvent.attendeeList = tempList.join(", ");
 
           this.eventService.updateAttendees(this.currentEvent).subscribe(edittedEvent => {
-            console.log(edittedEvent);
-            this.router.navigate(["home"]);
+            // console.log(edittedEvent);
+            this.router.navigate(["calendar"]);
           });
         }
       }
